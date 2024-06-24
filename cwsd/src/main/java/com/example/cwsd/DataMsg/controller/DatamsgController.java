@@ -1,8 +1,8 @@
 package com.example.cwsd.DataMsg.controller;
 
-import com.third.zhgd.DataMsg.entity.Datamsg;
-import com.third.zhgd.DataMsg.service.DatamsgService;
-import com.third.zhgd.other.utils.Result;
+import com.example.cwsd.DataMsg.entity.Datamsg;
+import com.example.cwsd.DataMsg.service.DatamsgService;
+import com.example.cwsd.other.utils.Result;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;

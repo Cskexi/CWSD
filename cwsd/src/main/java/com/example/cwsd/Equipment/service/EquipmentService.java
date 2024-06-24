@@ -2,7 +2,7 @@ package com.example.cwsd.Equipment.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.third.zhgd.Equipment.entity.Equipment;
+import com.example.cwsd.Equipment.entity.Equipment;
 
 import java.util.List;
 

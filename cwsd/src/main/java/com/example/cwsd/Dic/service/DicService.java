@@ -2,7 +2,7 @@ package com.example.cwsd.Dic.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.third.zhgd.Dic.entity.Dic;
+import com.example.cwsd.Dic.entity.Dic;
 
 import java.util.List;
 

@@ -4,11 +4,11 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.third.zhgd.Dictype.entity.Dictype;
-import com.third.zhgd.Dictype.mapper.DictypeMapper;
-import com.third.zhgd.Dictype.service.DictypeService;
-import com.third.zhgd.other.utils.ConstantsUtils;
-import com.third.zhgd.other.utils.DateTool;
+import com.example.cwsd.Dictype.entity.Dictype;
+import com.example.cwsd.Dictype.mapper.DictypeMapper;
+import com.example.cwsd.Dictype.service.DictypeService;
+import com.example.cwsd.other.utils.ConstantsUtils;
+import com.example.cwsd.other.utils.DateTool;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

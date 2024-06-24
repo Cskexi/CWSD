@@ -1,7 +1,7 @@
 package com.example.cwsd.Apply.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.third.zhgd.other.utils.BaseEntity;
+import com.example.cwsd.other.utils.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

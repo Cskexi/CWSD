@@ -4,9 +4,9 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.third.zhgd.DataMsg.entity.Datamsg;
-import com.third.zhgd.DataMsg.mapper.DatamsgMapper;
-import com.third.zhgd.DataMsg.service.DatamsgService;
+import com.example.cwsd.DataMsg.entity.Datamsg;
+import com.example.cwsd.DataMsg.mapper.DatamsgMapper;
+import com.example.cwsd.DataMsg.service.DatamsgService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

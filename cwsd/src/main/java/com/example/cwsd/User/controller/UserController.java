@@ -1,11 +1,11 @@
 package com.example.cwsd.User.controller;
 
-import com.third.zhgd.User.dto.UserLoginDto;
-import com.third.zhgd.User.entity.User;
-import com.third.zhgd.User.service.UserService;
-import com.third.zhgd.other.utils.JwtUtil;
-import com.third.zhgd.other.utils.MD5Util;
-import com.third.zhgd.other.utils.Result;
+import com.example.cwsd.User.dto.UserLoginDto;
+import com.example.cwsd.User.entity.User;
+import com.example.cwsd.User.service.UserService;
+import com.example.cwsd.other.utils.JwtUtil;
+import com.example.cwsd.other.utils.MD5Util;
+import com.example.cwsd.other.utils.Result;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.third.zhgd.other.utils.JwtUtil.validateToken;
+import static com.example.cwsd.other.utils.JwtUtil.validateToken;
 
 
 /**

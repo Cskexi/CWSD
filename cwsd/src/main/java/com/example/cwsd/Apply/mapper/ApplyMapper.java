@@ -1,7 +1,7 @@
 package com.example.cwsd.Apply.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.third.zhgd.Apply.entity.Apply;
+import com.example.cwsd.Apply.entity.Apply;
 
 /**
  * <p>

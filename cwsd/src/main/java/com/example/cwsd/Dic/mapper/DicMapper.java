@@ -1,7 +1,7 @@
 package com.example.cwsd.Dic.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.third.zhgd.Dic.entity.Dic;
+import com.example.cwsd.Dic.entity.Dic;
 
 /**
  * <p>

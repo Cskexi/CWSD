@@ -4,11 +4,11 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.third.zhgd.Equipment.entity.Equipment;
-import com.third.zhgd.Equipment.mapper.EquipmentMapper;
-import com.third.zhgd.Equipment.service.EquipmentService;
-import com.third.zhgd.other.utils.ConstantsUtils;
-import com.third.zhgd.other.utils.DateTool;
+import com.example.cwsd.Equipment.entity.Equipment;
+import com.example.cwsd.Equipment.mapper.EquipmentMapper;
+import com.example.cwsd.Equipment.service.EquipmentService;
+import com.example.cwsd.other.utils.ConstantsUtils;
+import com.example.cwsd.other.utils.DateTool;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

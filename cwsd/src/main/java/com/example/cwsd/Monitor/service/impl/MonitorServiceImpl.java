@@ -4,10 +4,10 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.third.zhgd.Monitor.entity.Monitor;
-import com.third.zhgd.Monitor.mapper.MonitorMapper;
-import com.third.zhgd.Monitor.service.MonitorService;
-import com.third.zhgd.other.utils.ConstantsUtils;
+import com.example.cwsd.Monitor.entity.Monitor;
+import com.example.cwsd.Monitor.mapper.MonitorMapper;
+import com.example.cwsd.Monitor.service.MonitorService;
+import com.example.cwsd.other.utils.ConstantsUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

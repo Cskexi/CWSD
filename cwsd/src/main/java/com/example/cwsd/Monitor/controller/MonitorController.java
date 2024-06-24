@@ -1,8 +1,8 @@
 package com.example.cwsd.Monitor.controller;
 
-import com.third.zhgd.Monitor.entity.Monitor;
-import com.third.zhgd.Monitor.service.MonitorService;
-import com.third.zhgd.other.utils.Result;
+import com.example.cwsd.Monitor.entity.Monitor;
+import com.example.cwsd.Monitor.service.MonitorService;
+import com.example.cwsd.other.utils.Result;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;

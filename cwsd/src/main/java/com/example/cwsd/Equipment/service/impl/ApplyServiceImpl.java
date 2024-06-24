@@ -1,13 +1,13 @@
-package com.example.cwsd.Apply.service.impl;
+package com.example.cwsd.Equipment.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.third.zhgd.Apply.entity.Apply;
-import com.third.zhgd.Apply.mapper.ApplyMapper;
-import com.third.zhgd.Apply.service.ApplyService;
-import com.third.zhgd.other.utils.DateTool;
+import com.example.cwsd.Apply.entity.Apply;
+import com.example.cwsd.Apply.mapper.ApplyMapper;
+import com.example.cwsd.Equipment.service.ApplyService;
+import com.example.cwsd.other.utils.DateTool;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
 package com.example.cwsd.Equipment.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.third.zhgd.Equipment.entity.Equipment;
+import com.example.cwsd.Equipment.entity.Equipment;
 
 /**
  * <p>

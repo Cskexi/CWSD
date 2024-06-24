@@ -2,7 +2,7 @@ package com.example.cwsd.Notice.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.third.zhgd.Notice.entity.Notice;
+import com.example.cwsd.Notice.entity.Notice;
 
 import java.util.List;
 

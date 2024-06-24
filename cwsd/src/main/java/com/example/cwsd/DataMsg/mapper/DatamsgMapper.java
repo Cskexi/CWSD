@@ -1,7 +1,7 @@
 package com.example.cwsd.DataMsg.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.third.zhgd.DataMsg.entity.Datamsg;
+import com.example.cwsd.DataMsg.entity.Datamsg;
 
 /**
  * <p>

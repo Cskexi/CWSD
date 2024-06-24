@@ -1,8 +1,8 @@
 package com.example.cwsd.Dictype.controller;
 
-import com.third.zhgd.Dictype.entity.Dictype;
-import com.third.zhgd.Dictype.service.DictypeService;
-import com.third.zhgd.other.utils.Result;
+import com.example.cwsd.Dictype.entity.Dictype;
+import com.example.cwsd.Dictype.service.DictypeService;
+import com.example.cwsd.other.utils.Result;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;

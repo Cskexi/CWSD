@@ -2,8 +2,8 @@ package com.example.cwsd.User.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.third.zhgd.User.dto.UserLoginDto;
-import com.third.zhgd.User.entity.User;
+import com.example.cwsd.User.dto.UserLoginDto;
+import com.example.cwsd.User.entity.User;
 
 import java.util.List;
 

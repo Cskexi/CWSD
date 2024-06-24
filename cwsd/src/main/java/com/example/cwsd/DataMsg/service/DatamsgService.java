@@ -2,7 +2,7 @@ package com.example.cwsd.DataMsg.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.third.zhgd.DataMsg.entity.Datamsg;
+import com.example.cwsd.DataMsg.entity.Datamsg;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.example.cwsd.Apply.controller;
 
 import com.example.cwsd.Apply.entity.Apply;
-import com.example.cwsd.Apply.service.ApplyService;
+import com.example.cwsd.Equipment.service.ApplyService;
 import com.example.cwsd.other.utils.Result;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;

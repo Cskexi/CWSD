@@ -2,7 +2,7 @@ package com.example.cwsd.Dictype.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.third.zhgd.Dictype.entity.Dictype;
+import com.example.cwsd.Dictype.entity.Dictype;
 
 import java.util.List;
 

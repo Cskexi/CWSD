@@ -2,7 +2,7 @@ package com.example.cwsd.Monitor.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.third.zhgd.Monitor.entity.Monitor;
+import com.example.cwsd.Monitor.entity.Monitor;
 
 import java.util.List;
 

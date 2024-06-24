@@ -1,7 +1,7 @@
 package com.example.cwsd.Notice.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.third.zhgd.Notice.entity.Notice;
+import com.example.cwsd.Notice.entity.Notice;
 
 /**
  * <p>

@@ -1,8 +1,8 @@
 package com.example.cwsd.Notice.controller;
 
-import com.third.zhgd.Notice.entity.Notice;
-import com.third.zhgd.Notice.service.NoticeService;
-import com.third.zhgd.other.utils.Result;
+import com.example.cwsd.Notice.entity.Notice;
+import com.example.cwsd.Notice.service.NoticeService;
+import com.example.cwsd.other.utils.Result;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;

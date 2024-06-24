@@ -1,8 +1,8 @@
 package com.example.cwsd.Equipment.controller;
 
-import com.third.zhgd.Equipment.entity.Equipment;
-import com.third.zhgd.Equipment.service.EquipmentService;
-import com.third.zhgd.other.utils.Result;
+import com.example.cwsd.Equipment.entity.Equipment;
+import com.example.cwsd.Equipment.service.EquipmentService;
+import com.example.cwsd.other.utils.Result;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;

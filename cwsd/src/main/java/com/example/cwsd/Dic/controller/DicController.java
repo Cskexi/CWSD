@@ -1,8 +1,8 @@
 package com.example.cwsd.Dic.controller;
 
-import com.third.zhgd.Dic.entity.Dic;
-import com.third.zhgd.Dic.service.DicService;
-import com.third.zhgd.other.utils.Result;
+import com.example.cwsd.Dic.entity.Dic;
+import com.example.cwsd.Dic.service.DicService;
+import com.example.cwsd.other.utils.Result;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;

@@ -2,7 +2,7 @@ package com.example.cwsd.Dictype.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.third.zhgd.Dictype.entity.Dictype;
+import com.example.cwsd.Dictype.entity.Dictype;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 

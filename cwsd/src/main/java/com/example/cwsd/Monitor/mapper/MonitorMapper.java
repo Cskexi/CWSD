@@ -1,7 +1,7 @@
 package com.example.cwsd.Monitor.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.third.zhgd.Monitor.entity.Monitor;
+import com.example.cwsd.Monitor.entity.Monitor;
 
 /**
  * <p>
