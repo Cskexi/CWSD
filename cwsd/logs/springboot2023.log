@@ -1,0 +1,118 @@
+2024-06-25 11:17:36.925  INFO 18360 --- [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 1.8.0_381 on Csk-Book with PID 18360 (D:\User\Workspace\CWSD\cwsd\target\classes started by Cskexi in D:\User\Workspace\CWSD\cwsd)
+2024-06-25 11:17:36.932  INFO 18360 --- [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to default profiles: default
+2024-06-25 11:17:36.988  INFO 18360 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-06-25 11:17:36.988  INFO 18360 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-06-25 11:17:38.296  WARN 18360 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'bookMapper' and 'com.example.demo.chapter2.mapper.BookMapper' mapperInterface. Bean already defined with the same name!
+2024-06-25 11:17:38.297  WARN 18360 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.example.demo.chapter2.mapper]' package. Please check your configuration.
+2024-06-25 11:17:38.870  INFO 18360 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
+2024-06-25 11:17:38.886  INFO 18360 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-25 11:17:38.886  INFO 18360 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.48]
+2024-06-25 11:17:38.980  INFO 18360 --- [restartedMain] o.a.c.c.C.[.[localhost].[/spring]        : Initializing Spring embedded WebApplicationContext
+2024-06-25 11:17:38.980  INFO 18360 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1992 ms
+2024-06-25 11:17:40.421  INFO 18360 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2024-06-25 11:17:40.555  INFO 18360 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-25 11:17:40.799  INFO 18360 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/spring'
+2024-06-25 11:17:40.799  INFO 18360 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2024-06-25 11:17:40.814  INFO 18360 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2024-06-25 11:17:40.842  INFO 18360 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2024-06-25 11:17:40.964  INFO 18360 --- [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 4.539 seconds (JVM running for 5.969)
+2024-06-25 11:17:46.883  INFO 18360 --- [http-nio-8899-exec-1] o.a.c.c.C.[.[localhost].[/spring]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-25 11:17:46.883  INFO 18360 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-25 11:17:46.885  INFO 18360 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-06-25 11:17:47.064  INFO 18360 --- [http-nio-8899-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-25 11:17:47.905  INFO 18360 --- [http-nio-8899-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-25 11:40:01.887  INFO 18360 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-25 11:40:01.901  INFO 18360 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-06-25 11:40:08.359  INFO 7184 --- [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 1.8.0_381 on Csk-Book with PID 7184 (D:\User\Workspace\CWSD\cwsd\target\classes started by Cskexi in D:\User\Workspace\CWSD\cwsd)
+2024-06-25 11:40:08.362  INFO 7184 --- [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to default profiles: default
+2024-06-25 11:40:08.420  INFO 7184 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-06-25 11:40:08.420  INFO 7184 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-06-25 11:40:09.598  WARN 7184 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'bookMapper' and 'com.example.demo.chapter2.mapper.BookMapper' mapperInterface. Bean already defined with the same name!
+2024-06-25 11:40:09.599  WARN 7184 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.example.demo.chapter2.mapper]' package. Please check your configuration.
+2024-06-25 11:40:10.187  INFO 7184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
+2024-06-25 11:40:10.196  INFO 7184 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-25 11:40:10.197  INFO 7184 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.48]
+2024-06-25 11:40:10.293  INFO 7184 --- [restartedMain] o.a.c.c.C.[.[localhost].[/spring]        : Initializing Spring embedded WebApplicationContext
+2024-06-25 11:40:10.293  INFO 7184 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1872 ms
+2024-06-25 11:40:11.638  INFO 7184 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2024-06-25 11:40:11.747  INFO 7184 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-25 11:40:11.980  INFO 7184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/spring'
+2024-06-25 11:40:11.982  INFO 7184 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2024-06-25 11:40:11.995  INFO 7184 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2024-06-25 11:40:12.023  INFO 7184 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2024-06-25 11:40:12.139  INFO 7184 --- [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 4.232 seconds (JVM running for 5.593)
+2024-06-25 11:42:11.447  INFO 7184 --- [http-nio-8899-exec-2] o.a.c.c.C.[.[localhost].[/spring]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-25 11:42:11.448  INFO 7184 --- [http-nio-8899-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-25 11:42:11.450  INFO 7184 --- [http-nio-8899-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-06-25 11:42:11.617  INFO 7184 --- [http-nio-8899-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-25 11:42:12.174  INFO 7184 --- [http-nio-8899-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-25 14:17:31.587  WARN 7184 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h33m19s315ms463µs300ns).
+2024-06-25 14:26:51.060  INFO 7184 --- [http-nio-8899-exec-10] c.e.d.c.controller.DictypeController     : this is info
+2024-06-25 14:26:51.060  WARN 7184 --- [http-nio-8899-exec-10] c.e.d.c.controller.DictypeController     : this is warn
+2024-06-25 14:26:51.060 ERROR 7184 --- [http-nio-8899-exec-10] c.e.d.c.controller.DictypeController     : this is error
+2024-06-25 14:27:05.189  INFO 7184 --- [http-nio-8899-exec-4] c.e.d.c.controller.DictypeController     : this is info
+2024-06-25 14:27:05.189  WARN 7184 --- [http-nio-8899-exec-4] c.e.d.c.controller.DictypeController     : this is warn
+2024-06-25 14:27:05.189 ERROR 7184 --- [http-nio-8899-exec-4] c.e.d.c.controller.DictypeController     : this is error
+2024-06-25 14:29:08.211  INFO 7184 --- [http-nio-8899-exec-6] c.e.d.c.controller.DictypeController     : this is info
+2024-06-25 14:29:08.211  WARN 7184 --- [http-nio-8899-exec-6] c.e.d.c.controller.DictypeController     : this is warn
+2024-06-25 14:29:08.211 ERROR 7184 --- [http-nio-8899-exec-6] c.e.d.c.controller.DictypeController     : this is error
+2024-06-25 14:30:09.868  INFO 7184 --- [Thread-13] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-25 14:30:09.874  INFO 7184 --- [Thread-13] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-06-25 14:30:09.987  INFO 7184 --- [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 1.8.0_381 on Csk-Book with PID 7184 (D:\User\Workspace\CWSD\cwsd\target\classes started by Cskexi in D:\User\Workspace\CWSD\cwsd)
+2024-06-25 14:30:09.987  INFO 7184 --- [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to default profiles: default
+2024-06-25 14:30:10.264  WARN 7184 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'bookMapper' and 'com.example.demo.chapter2.mapper.BookMapper' mapperInterface. Bean already defined with the same name!
+2024-06-25 14:30:10.264  WARN 7184 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.example.demo.chapter2.mapper]' package. Please check your configuration.
+2024-06-25 14:30:10.321  INFO 7184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
+2024-06-25 14:30:10.322  INFO 7184 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-25 14:30:10.322  INFO 7184 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.48]
+2024-06-25 14:30:10.343  INFO 7184 --- [restartedMain] o.a.c.c.C.[.[localhost].[/spring]        : Initializing Spring embedded WebApplicationContext
+2024-06-25 14:30:10.344  INFO 7184 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 355 ms
+2024-06-25 14:30:10.829  INFO 7184 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2024-06-25 14:30:10.867  INFO 7184 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-25 14:30:10.930  INFO 7184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/spring'
+2024-06-25 14:30:10.930  INFO 7184 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2024-06-25 14:30:10.931  INFO 7184 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2024-06-25 14:30:10.936  INFO 7184 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2024-06-25 14:30:10.962  INFO 7184 --- [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 1.004 seconds (JVM running for 10197.284)
+2024-06-25 14:30:10.964  INFO 7184 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-06-25 14:30:12.677  INFO 7184 --- [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 1.8.0_381 on Csk-Book with PID 7184 (D:\User\Workspace\CWSD\cwsd\target\classes started by Cskexi in D:\User\Workspace\CWSD\cwsd)
+2024-06-25 14:30:12.677  INFO 7184 --- [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to default profiles: default
+2024-06-25 14:30:12.932  WARN 7184 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'bookMapper' and 'com.example.demo.chapter2.mapper.BookMapper' mapperInterface. Bean already defined with the same name!
+2024-06-25 14:30:12.932  WARN 7184 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.example.demo.chapter2.mapper]' package. Please check your configuration.
+2024-06-25 14:30:12.979  INFO 7184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
+2024-06-25 14:30:12.980  INFO 7184 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-25 14:30:12.980  INFO 7184 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.48]
+2024-06-25 14:30:12.994  INFO 7184 --- [restartedMain] o.a.c.c.C.[.[localhost].[/spring]        : Initializing Spring embedded WebApplicationContext
+2024-06-25 14:30:12.994  INFO 7184 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 315 ms
+2024-06-25 14:30:13.447  INFO 7184 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2024-06-25 14:30:13.479  INFO 7184 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-25 14:30:13.560  INFO 7184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/spring'
+2024-06-25 14:30:13.562  INFO 7184 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2024-06-25 14:30:13.562  INFO 7184 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2024-06-25 14:30:13.566  INFO 7184 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2024-06-25 14:30:13.581  INFO 7184 --- [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 0.923 seconds (JVM running for 10199.903)
+2024-06-25 14:30:13.583  INFO 7184 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-06-25 14:30:15.479  INFO 7184 --- [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 1.8.0_381 on Csk-Book with PID 7184 (D:\User\Workspace\CWSD\cwsd\target\classes started by Cskexi in D:\User\Workspace\CWSD\cwsd)
+2024-06-25 14:30:15.479  INFO 7184 --- [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to default profiles: default
+2024-06-25 14:30:15.747  WARN 7184 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'bookMapper' and 'com.example.demo.chapter2.mapper.BookMapper' mapperInterface. Bean already defined with the same name!
+2024-06-25 14:30:15.747  WARN 7184 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.example.demo.chapter2.mapper]' package. Please check your configuration.
+2024-06-25 14:30:15.807  INFO 7184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
+2024-06-25 14:30:15.808  INFO 7184 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-25 14:30:15.808  INFO 7184 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.48]
+2024-06-25 14:30:15.823  INFO 7184 --- [restartedMain] o.a.c.c.C.[.[localhost].[/spring]        : Initializing Spring embedded WebApplicationContext
+2024-06-25 14:30:15.823  INFO 7184 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 341 ms
+2024-06-25 14:30:16.257  INFO 7184 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2024-06-25 14:30:16.288  INFO 7184 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-06-25 14:30:16.339  INFO 7184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/spring'
+2024-06-25 14:30:16.339  INFO 7184 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2024-06-25 14:30:16.339  INFO 7184 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2024-06-25 14:30:16.342  INFO 7184 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2024-06-25 14:30:16.354  INFO 7184 --- [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 0.898 seconds (JVM running for 10202.676)
+2024-06-25 14:30:16.356  INFO 7184 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-06-25 14:30:20.861  INFO 7184 --- [http-nio-8899-exec-2] o.a.c.c.C.[.[localhost].[/spring]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-25 14:30:20.861  INFO 7184 --- [http-nio-8899-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-25 14:30:20.862  INFO 7184 --- [http-nio-8899-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-06-25 14:30:20.869  INFO 7184 --- [http-nio-8899-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-06-25 14:30:20.884  INFO 7184 --- [http-nio-8899-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-06-25 15:36:17.619  INFO 7184 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2024-06-25 15:36:17.624  INFO 7184 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
