@@ -40,9 +40,13 @@ public class ${table.serviceImplName} extends ServiceImpl<${table.mapperName},${
         List<String> listIds = new ArrayList<>();
         String[] aryIds = ids.split(",");
         for(String id: aryIds){
-            listIds.add(id);
+        ${entity} ${table.entityPath} = this.getById(id);
+        ${table.entityPath}.setDelFlag(ConstantsUtils.GL_DEL);
+        this.updateById(${table.entityPath});
+<#--            listIds.add(id);-->
         }
-        this.removeByIds(listIds);
+<#--        this.removeByIds(listIds);-->
+
     }
 
 <#--    @Override-->
@@ -73,8 +77,12 @@ public class ${table.serviceImplName} extends ServiceImpl<${table.mapperName},${
     @Override
     public Page<${entity}> page(Integer pageNum,Integer pageSize) {
         Page<${entity}> page = new Page(pageNum,pageSize);
-
-        return this.page(page);
+        LambdaQueryWrapper<${entity}> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(${entity}::getDelFlag, ConstantsUtils.GL_NORMAL);
+        lambdaQueryWrapper.orderByDesc(${entity}::getCreateTime);
+        page = this.page(page, lambdaQueryWrapper);
+        return page;
+<#--        return this.page(page);-->
     }
 
 <#--    @Override-->
