@@ -27,4 +27,6 @@ public interface StoreService extends IService<Store> {
     Page<Store> page(Integer pageNum,Integer pageSize,String userId);
     Store myGetById(String id);
 
+    Store GetByUserId(String userId);
+
 }

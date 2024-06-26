@@ -1,6 +1,7 @@
 package com.example.demo.Store.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.Goods.entity.Goods;
@@ -92,6 +93,20 @@ public class StoreServiceImpl extends ServiceImpl<StoreMapper,Store> implements 
     @Override
     public Store myGetById(String id) {
         return this.getById(id);
+    }
+
+    @Override
+    public Store GetByUserId(String userId) {
+        QueryWrapper<Store> queryWrapper = new QueryWrapper<>();
+        if(StringUtils.isNotBlank(userId)){
+            queryWrapper.lambda().like(Store::getUserId,userId);
+        }
+        queryWrapper.lambda().eq(Store::getDelFlag,ConstantsUtils.GL_NORMAL);
+        queryWrapper.lambda().orderByDesc(Store::getCreateTime);
+
+        Store store = this.getOne(queryWrapper, false);
+
+        return store;
     }
 
 }
