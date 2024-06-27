@@ -19,7 +19,11 @@ public interface CategoriesService extends IService<Categories> {
 
     Boolean addOrUpdate(Categories categories);
     void deleteByIds(String ids);
-    List<Categories> list();
-    Page<Categories> page(Integer pageNum,Integer pageSize);
+
+    Categories findFatherById(String id);
+
+    List<Categories> list(String name);
+
+    Page<Categories> page(Integer pageNum, Integer pageSize);
 
 }

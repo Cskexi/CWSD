@@ -33,7 +33,6 @@ public class CategoriesController {
     @RequestMapping(method = RequestMethod.POST, value = "/save")
     public Result addOrUpdate(@RequestBody Categories categories) {
         Result result = new Result();
-
         //交给业务去处理，service
         categoriesService.addOrUpdate(categories);
 
@@ -51,6 +50,18 @@ public class CategoriesController {
         Result result = new Result();
         categoriesService.deleteByIds(ids);
         result.success("删除成功");
+        return result;
+    }
+
+    @ApiOperation(value = "找父节点")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "ids",required = true,paramType = "query",value = "需要删除的多个id，用逗号,隔开")
+    })
+    @RequestMapping(method = RequestMethod.POST,value = "/findFatherById")
+    public Result findFatherById(String id) {
+        Result result = new Result();
+        categoriesService.findFatherById(id);
+        result.success("成功");
         return result;
     }
 
