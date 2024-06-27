@@ -25,9 +25,9 @@ public class Test {
 
 
     @RequestMapping(method = RequestMethod.GET,value = "/get")
-    public Result get(String id){
+    public Result get(){
         Result result = new Result();
-        result.setData(id);
+        result.setData("123");
         //result.unauthorized(id);
         return result;
     }
