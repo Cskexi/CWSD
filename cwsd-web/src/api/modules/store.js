@@ -12,3 +12,8 @@ export function storeGetMessage(params){
 export function storeAddOrUpdate(params){
     return postJson('Store/save',params)
 }
+
+
+export function storeGetStoreByUserId(params){
+    return post('Store/getStoreByUserId',params)
+}

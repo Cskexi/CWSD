@@ -4,6 +4,11 @@ cwsd-web/node_modules
 cwsd-web/dist
 cwsd/src/main/resources/application.properties
 cwsd/logs
+cwsd/HELP.md
+cwsd/target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
 
 # local env files
 .env.local

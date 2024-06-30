@@ -63,7 +63,7 @@ export default {
 
     goToRegister() {
       // 处理跳转到注册页面的逻辑
-      this.$router.push('/RegisterPage'); // 假设你的注册页面路由为 '/register'
+      this.$router.push('/mainPage'); // 假设你的注册页面路由为 '/register'
     },
 
     toShopping() {

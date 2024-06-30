@@ -1,5 +1,9 @@
+import { getStore } from '@/lib/storage';
+import store from '@/store';
 <template>
-    <div class="store-management">
+    <div class="categories-management">
+        分类管理
+        <!-- 搜索框和新增按钮 -->
         <el-form
             ref="searchForm"
             :model="searchForm"
@@ -7,64 +11,24 @@
             class="form-item"
             label-width="80px"
         >
-            <el-col :xl="6" :md="8" :sm="24">
-                <el-input
-                    placeholder="商店名称"
-                    v-model="searchForm.name"
-                    clearable
-                >
-                </el-input>
-            </el-col>
-
-            <el-col :xl="6 || 24" :md="8 || 24" :sm="24">
-                <el-form-item>
-                    <div :style="{ float: 'right', overflow: 'hidden' } || {}">
-                        <el-button
-                            icon="el-icon-search"
-                            type="primary"
-                            @click="search"
-                            >搜索</el-button
-                        >
-                    </div>
-                </el-form-item>
-            </el-col>
-
-            <el-button type="primary" @click="add()">新增</el-button>
+            <el-button type="primary" @click="add()">新增分类</el-button>
         </el-form>
-
-        <el-Table :data="TableData" style="width: 100%">
+        <!-- 分类表 -->
+        <el-Table :data="categoriesData" style="width: 100%">
             <el-Table-column label="名称" prop="name"></el-Table-column>
 
-            <el-Table-column label="地址" prop="address"></el-Table-column>
-
             <el-Table-column
-                label="联系电话"
-                prop="telephone"
-            ></el-Table-column>
-
-            <el-Table-column
-                label="所属管理员"
-                prop="etc.user.username"
+                label="所属父类"
+                prop="categories"
             ></el-Table-column>
 
             <el-Table-column label="操作" fixed="right">
                 <template slot-scope="scope">
-                    <router-link
-                        :to="{
-                            path: '/mainPage/Business',
-                            params: { id: '123' }
-                        }"
-                    >
-                        <el-button size="mini" style="margin-bottom: 10px"
-                            >商品管理</el-button
-                        >
-                    </router-link>
-                    <br />
                     <el-button
                         size="mini"
-                        @click="edit(scope.row)"
+                        @click="dicMgn(scope.row.id)"
                         style="margin-bottom: 10px"
-                        >商店信息编辑</el-button
+                        >分类管理</el-button
                     ><br />
                     <el-button
                         size="mini"
@@ -75,7 +39,7 @@
                 </template>
             </el-Table-column>
         </el-Table>
-
+        <!-- 分页设置 -->
         <div class="block">
             <el-pagination
                 @size-change="handleSizeChange"
@@ -88,7 +52,7 @@
             >
             </el-pagination>
         </div>
-
+        <!-- 新增分类 -->
         <addOrEdit
             v-if="visible"
             :defaultFormDate="obj"
@@ -96,23 +60,20 @@
             :visible="visible"
             @close="closeFather"
         ></addOrEdit>
-        <goods
-            v-if="visible_mgn"
-            :visible="visible_mgn"
-            :storeId="storeId"
-            @close="closeMgn"
-        ></goods>
     </div>
 </template>
   
 <script>
-import { getByToken } from '@/api/modules/user'
-import { storePage, storeDeleteByIds } from '@/api/modules/store'
+//import { getByToken } from '@/api/modules/user'
+import {
+    categoriesPage,
+    categoriesDeleteByIds,
+    categoriesAddOrUpdate
+} from '@/api/modules/categories'
 import addOrEdit from './module/addOrEdit'
-import goods from './module/goods'
 import { getStore } from '@/lib/storage'
 export default {
-    components: { addOrEdit, goods },
+    components: { addOrEdit },
     data() {
         return {
             visible: false,
@@ -124,20 +85,20 @@ export default {
             searchForm: {
                 pageNum: 1,
                 pageSize: 10,
-                userId: ''
+                storeId: ''
             },
             TableData: [],
             selectionIds: [],
             textarea: '',
-            value: ''
+            value: '',
+            storeData: [],
+            categoriesData: []
         }
     },
 
     mounted() {
-        this.userId = getStore('userId')
-        this.userType = getStore('userType')
-        console.log(this.userType)
-        this.loadUserData()
+        //this.userType = getStore('userType')
+
         this.loadTableData()
     },
     methods: {
@@ -147,12 +108,13 @@ export default {
         },
         edit(row) {
             this.obj = row
-            this.title = '编辑商店：' + row.name
+            this.title = '编辑分类：' + row.name
             this.visible = true
         },
         add() {
             this.visible = true
-            this.obj = {}
+            this.obj = this.categoriesData
+
             this.title = '新增'
         },
         closeFather(val) {
@@ -190,18 +152,18 @@ export default {
                     console.log('cancle')
                 })
         },
-
         search() {
             this.loadTableData()
         },
 
+        // 用户数据
         loadUserData() {
             let token = getStore('token')
             if (token) {
                 getByToken({ token: token })
                     .then((result) => {
                         this.user = result.data
-                        console.log(this.user)
+                        //console.log(this.user)
                     })
                     .catch((err) => {
                         console.log('error:' + err)
@@ -211,25 +173,29 @@ export default {
             }
         },
 
+        // 加载需要的数据
         loadTableData() {
-            console.log(this.userId)
-            console.log(this.userType)
+            // console.log(this.userId);
+            // console.log(this.userType);
             // if (this.userType == 2) {
             this.searchForm.userId = this.userId
             // }
-
-            storePage({ ...this.searchForm })
+            categoriesPage({ ...this.searchForm })
                 .then((result) => {
-                    this.TableData = result.data.records
+                    //this.TableData = result.data.records;
                     // this.TableData = this.setText(result.data.records);
-                    this.total = result.data.total
-                    console.log(result)
+                    //this.total = result.data.total;
+
+                    this.categoriesData = result.data.records
+                    console.log(this.categoriesData)
                     //console.log(this.UserData)
                 })
                 .catch((err) => {
                     //console.log("error:"+err)
                 })
         },
+
+        //分页
         handleSizeChange(val) {
             this.searchForm.pageSize = val
             this.loadTableData()

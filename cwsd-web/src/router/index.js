@@ -21,6 +21,10 @@ const MainShopping = () => import('../views/Shopping/main.vue')
 const StoreShopping = () => import('../views/Shopping/store.vue')
 const GoodsShopping = () => import('../views/Shopping/goods.vue')
 
+const Business = () => import('../views/Business/index.vue')
+const Categories = () => import('../views/Categories/index.vue')
+
+
 
 
 // const about = () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
@@ -119,6 +123,16 @@ const routes = [
         name: 'dictype',
         component: dictype,
       },
+      {
+        path: 'Business',
+        name: 'Business',
+        component: Business,
+        },
+        {
+            path: 'Categories',
+            name: 'Categories',
+            component: Categories,
+          },
     ]
   },
 
