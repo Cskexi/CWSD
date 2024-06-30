@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : MySql
+ Source Server         : 1
  Source Server Type    : MySQL
  Source Server Version : 80034
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 80034
  File Encoding         : 65001
 
- Date: 25/06/2024 15:50:01
+ Date: 27/06/2024 10:08:45
 */
 
 SET NAMES utf8mb4;
@@ -54,7 +54,7 @@ CREATE TABLE `tb_address`  (
   `create_time` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '创建时间 YYYY-MM-DD hh:mm:ss',
   `del_flag` tinyint NULL DEFAULT NULL COMMENT '是否删除 1-正常 0-已删除',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = '地址表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = '地址表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_address
@@ -88,12 +88,19 @@ CREATE TABLE `tb_categories`  (
   `create_time` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建时间 YYYY-MM-DD hh:mm:ss',
   `del_flag` tinyint(1) NULL DEFAULT 1 COMMENT '是否删除 1-正常 0-已删除',
   `parent_category_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '上一级类别',
+  `first_category_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '最高级类别',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '字典表 ' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_categories
 -- ----------------------------
+INSERT INTO `tb_categories` VALUES ('1d5f89c550ea46a1767cebea84c31ffd', '小猫', '2024-06-27 09:50:41', 1, '49468015a68a3370ae065a12d2b5e6ac', NULL);
+INSERT INTO `tb_categories` VALUES ('49468015a68a3370ae065a12d2b5e6ac', '猫', '2024-06-27 09:48:46', 1, NULL, NULL);
+INSERT INTO `tb_categories` VALUES ('59cdc14599cc397f0fb49263730f1cd0', '大猫', '2024-06-27 09:52:00', 1, '49468015a68a3370ae065a12d2b5e6ac', '49468015a68a3370ae065a12d2b5e6ac');
+INSERT INTO `tb_categories` VALUES ('9ad6361b701d4d095c2ec72a23ad3e82', '小小狗', '2024-06-27 09:53:27', 1, 'bd2d8fb5b9f69985370b5b3818f3af87', 'fcd869c75f579f168c373c7943c25f70');
+INSERT INTO `tb_categories` VALUES ('bd2d8fb5b9f69985370b5b3818f3af87', '小狗', '2024-06-27 09:52:25', 1, 'fcd869c75f579f168c373c7943c25f70', 'fcd869c75f579f168c373c7943c25f70');
+INSERT INTO `tb_categories` VALUES ('fcd869c75f579f168c373c7943c25f70', '狗', '2024-06-27 09:49:19', 1, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for tb_dic
@@ -284,6 +291,7 @@ CREATE TABLE `tb_pet`  (
   `species` tinyint NULL DEFAULT 0 COMMENT '宠物种类',
   `age` int NULL DEFAULT NULL COMMENT '年龄',
   `gender` tinyint(1) NULL DEFAULT NULL COMMENT '性别',
+  `products` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品表id',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品表' ROW_FORMAT = DYNAMIC;
 
@@ -342,6 +350,7 @@ CREATE TABLE `tb_products`  (
   `inventory` int NULL DEFAULT 0 COMMENT '库存',
   `state` tinyint(1) NULL DEFAULT NULL COMMENT '状态 1-正常 0-下架',
   `category_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品类别表ID',
+  `pet_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '宠物表id',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品表' ROW_FORMAT = DYNAMIC;
 

@@ -1,6 +1,7 @@
 package com.example.demo.categories.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.springboot2023.utils.DateTool;
@@ -25,9 +26,13 @@ public class CategoriesServiceImpl extends ServiceImpl<CategoriesMapper,Categori
 
     @Override
     public Boolean addOrUpdate(Categories categories) {
+        System.out.println(categories.getName());
         if(StringUtils.isBlank(categories.getId())){
             //add
             categories.setCreateTime(DateTool.getCurrTime());
+            if (categories.getParentCategoryId() != null) {
+                categories.setFirstCategoryId(findFatherById(categories.getParentCategoryId()).getId());
+            }
             this.save(categories);
         }else{
             //update
@@ -48,10 +53,30 @@ public class CategoriesServiceImpl extends ServiceImpl<CategoriesMapper,Categori
 
     }
 
+    @Override
+    public Categories findFatherById(String id) {
+        Categories category = this.getById(id);
+
+        if (category == null || category.getParentCategoryId() == null) {
+            return category; // 如果不存在或者已经是顶级类别
+        }
+        // 递归查找顶级类别
+        return findFatherById(category.getParentCategoryId());
+
+    }
+
+
 
     @Override
-    public List<Categories> list() {
-        return this.list();
+    public List<Categories> list(String name) {
+        QueryWrapper<Categories> queryWrapper = new QueryWrapper<>();
+        if(StringUtils.isNotBlank(name)){
+            queryWrapper.lambda().like(Categories::getName,name);
+        }
+        queryWrapper.lambda().eq(Categories::getDelFlag,ConstantsUtils.GL_NORMAL);
+        queryWrapper.lambda().orderByDesc(Categories::getCreateTime);
+        List<Categories> list =this.list(queryWrapper);
+        return list;
     }
 
 

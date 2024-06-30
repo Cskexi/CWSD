@@ -92,4 +92,14 @@ public class StoreController {
         return result;
     }
 
+    @RequestMapping(method = RequestMethod.POST,value = "/getStoreByUserId")
+    public Result getStoreByUserId(String userId){
+        Result result = new Result();
+
+        result.setData(storeService.GetByUserId(userId));
+
+        result.success("成功得到商店信息");
+        return result;
+    }
+
 }

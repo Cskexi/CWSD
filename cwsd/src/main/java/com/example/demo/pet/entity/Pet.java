@@ -51,5 +51,4 @@ public class Pet extends BaseEntity {
     @ApiModelProperty(value = "性别")
     private Integer gender;
 
-
 }

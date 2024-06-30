@@ -39,5 +39,9 @@ public class Categories extends BaseEntity {
     @ApiModelProperty(value = "上一级类别")
     private String parentCategoryId;
 
+    @ApiModelProperty(value = "最高级级类别")
+    private String firstCategoryId;
+
+
 
 }
