@@ -1,6 +1,7 @@
 package ${package.ServiceImpl};
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 <#--import com.cn.xmut.edu.springboot2023.utils.DateTool;-->
@@ -72,6 +73,10 @@ public class ${table.serviceImplName} extends ServiceImpl<${table.mapperName},${
 
     @Override
     public List<${entity}> list() {
+        QueryWrapper<${entity}> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(${entity}::getDelFlag,ConstantsUtils.GL_NORMAL);
+        queryWrapper.lambda().orderByDesc(${entity}::getCreateTime);
+        List<${entity}> list =this.list(queryWrapper);
         return this.list();
     }
 

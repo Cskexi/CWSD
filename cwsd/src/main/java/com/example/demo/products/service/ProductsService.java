@@ -20,6 +20,7 @@ public interface ProductsService extends IService<Products> {
     Boolean addOrUpdate(Products products);
     void deleteByIds(String ids);
     List<Products> list();
+    List<Products> listSearch(String name);
     Page<Products> page(Integer pageNum,Integer pageSize);
 
 }

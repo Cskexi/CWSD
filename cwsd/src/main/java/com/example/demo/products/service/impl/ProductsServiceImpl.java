@@ -1,8 +1,10 @@
 package com.example.demo.products.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.demo.categories.entity.Categories;
 import com.example.demo.springboot2023.utils.DateTool;
 import com.example.demo.springboot2023.utils.ConstantsUtils;
 import com.example.demo.products.mapper.ProductsMapper;
@@ -52,6 +54,16 @@ public class ProductsServiceImpl extends ServiceImpl<ProductsMapper,Products> im
     @Override
     public List<Products> list() {
         return this.list();
+    }
+
+    @Override
+    public List<Products> listSearch(String name) {
+        QueryWrapper<Products> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(Products::getDelFlag,ConstantsUtils.GL_NORMAL);
+        queryWrapper.lambda().like(Products::getName,name);
+        queryWrapper.lambda().orderByDesc(Products::getCreateTime);
+        List<Products> list =this.list(queryWrapper);
+        return list;
     }
 
 

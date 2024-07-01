@@ -35,7 +35,7 @@ public class MysqlGenerator {
     /**
      * 实体所在的module
      */
-    private static final String moduleName="serve";
+    private static final String moduleName="navigation";
     /**
      * 删除字符: tb_student =>Student
      * 不忽略，则tb_student =>TbStudent
@@ -44,7 +44,7 @@ public class MysqlGenerator {
     /**
      * 数据库表名，支持多个，用,隔开
      */
-    private static final String bean="tb_serve";
+    private static final String bean="tb_navigation";
     /**,tb_book
      * 数据库
      */
@@ -56,7 +56,7 @@ public class MysqlGenerator {
     /**
      * 密码
      */
-    private static final String password="admin";
+    private static final String password="030225";
 
     /**
      * 作者

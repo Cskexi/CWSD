@@ -22,7 +22,7 @@ public interface CategoriesService extends IService<Categories> {
 
     Categories findFatherById(String id);
 
-    List<Categories> list(String name);
+    List<Categories> list();
 
     Page<Categories> page(Integer pageNum, Integer pageSize);
 

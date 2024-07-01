@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.demo.chapter3.entity.User;
+import com.example.demo.chapter4.entity.Dictype;
 import com.example.demo.springboot2023.utils.DateTool;
 import com.example.demo.springboot2023.utils.ConstantsUtils;
 import com.example.demo.categories.mapper.CategoriesMapper;
@@ -68,15 +70,37 @@ public class CategoriesServiceImpl extends ServiceImpl<CategoriesMapper,Categori
 
 
     @Override
-    public List<Categories> list(String name) {
+    public List<Categories> list() {
         QueryWrapper<Categories> queryWrapper = new QueryWrapper<>();
-        if(StringUtils.isNotBlank(name)){
-            queryWrapper.lambda().like(Categories::getName,name);
-        }
         queryWrapper.lambda().eq(Categories::getDelFlag,ConstantsUtils.GL_NORMAL);
         queryWrapper.lambda().orderByDesc(Categories::getCreateTime);
         List<Categories> list =this.list(queryWrapper);
-        return list;
+        queryWrapper.lambda().isNull(Categories::getFirstCategoryId); // 匹配空值
+        List<Categories> listF =this.list(queryWrapper);
+        for(Categories categoriesF : listF){
+            List<Categories> children = new ArrayList<>();
+            for(Categories categories : list){
+                if(categoriesF.getId().equals(categories.getFirstCategoryId())){
+                    children.add(categories);
+                }
+//            User user = userService.getById(dictype.getUserId());
+//            dictype.put("user",new User());
+//            if(user!=null){
+//                dictype.put("user",user);
+//            }
+            }
+            categoriesF.put("children",new ArrayList<>());
+            if(!children.isEmpty()){
+                categoriesF.put("children",children);
+            }
+//            User user = userService.getById(dictype.getUserId());
+//            dictype.put("user",new User());
+//            if(user!=null){
+//                dictype.put("user",user);
+//            }
+        }
+
+        return listF;
     }
 
 
