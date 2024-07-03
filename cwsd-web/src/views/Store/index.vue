@@ -49,16 +49,13 @@
 
             <el-Table-column label="操作" fixed="right">
                 <template slot-scope="scope">
-                    <router-link
-                        :to="{
-                            path: '/mainPage/Business',
-                            params: { id: '123' }
-                        }"
+                    <el-button
+                        @click="gotoBusiness(scope.row)"
+                        size="mini"
+                        style="margin-bottom: 10px"
+                        >商品管理</el-button
                     >
-                        <el-button size="mini" style="margin-bottom: 10px"
-                            >商品管理</el-button
-                        >
-                    </router-link>
+
                     <br />
                     <el-button
                         size="mini"
@@ -111,6 +108,7 @@ import { storePage, storeDeleteByIds } from '@/api/modules/store'
 import addOrEdit from './module/addOrEdit'
 import goods from './module/goods'
 import { getStore } from '@/lib/storage'
+
 export default {
     components: { addOrEdit, goods },
     data() {
@@ -139,8 +137,17 @@ export default {
         console.log(this.userType)
         this.loadUserData()
         this.loadTableData()
+
+        this.$store.commit('setUserId')
+        console.log(this.$store.getters['getUserId'])
     },
     methods: {
+        gotoBusiness(a) {
+            console.log(a.id)
+            this.$store.commit('setStoreId', a.id)
+            console.log('storeId:' + this.$store.getters['getStoreId'])
+            this.$router.push('Business')
+        },
         dicMgn(id) {
             this.visible_mgn = true
             this.storeId = id
@@ -239,6 +246,15 @@ export default {
             this.searchForm.pageNum = val
             this.loadTableData()
             console.log(`当前页: ${val}`)
+        },
+
+        someMethod() {
+            this.$store.commit('setStoreId', storeId)
+        }
+    },
+    actions: {
+        setStoreIdAsync({ commit }, storeId) {
+            commit('setStoreId', storeId)
         }
     }
 }

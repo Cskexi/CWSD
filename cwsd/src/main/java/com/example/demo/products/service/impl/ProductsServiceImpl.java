@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.categories.entity.Categories;
+import com.example.demo.chapter3.entity.User;
 import com.example.demo.springboot2023.utils.DateTool;
 import com.example.demo.springboot2023.utils.ConstantsUtils;
 import com.example.demo.products.mapper.ProductsMapper;
@@ -68,10 +69,13 @@ public class ProductsServiceImpl extends ServiceImpl<ProductsMapper,Products> im
 
 
     @Override
-    public Page<Products> page(Integer pageNum,Integer pageSize) {
+    public Page<Products> page(Integer pageNum,Integer pageSize,String name) {
         Page<Products> page = new Page(pageNum,pageSize);
         LambdaQueryWrapper<Products> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(Products::getDelFlag, ConstantsUtils.GL_NORMAL);
+        if(StringUtils.isNotBlank(name)){
+            lambdaQueryWrapper.like(Products::getName,name);
+        }
         lambdaQueryWrapper.orderByDesc(Products::getCreateTime);
         page = this.page(page, lambdaQueryWrapper);
         return page;

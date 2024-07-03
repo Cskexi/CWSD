@@ -64,25 +64,17 @@ public class ProductsController {
         return result;
     }
 
-    @ApiOperation(value = "查询所有记录")
-    @RequestMapping(method = RequestMethod.POST,value = "/listSearch")
-    public Result listSearch(String name){
-        Result result = new Result();
-        result.success("获取list成功");
-        result.setData(productsService.listSearch(name));
-        return result;
-    }
-
     @ApiOperation(value = "分页获取记录")
     @ApiImplicitParams({
         @ApiImplicitParam(name = "pageNum",required = true,paramType = "query",value = "当前页码"),
         @ApiImplicitParam(name = "pageSize",required = true,paramType = "query",value = "每页记录数")
     })
     @RequestMapping(method = RequestMethod.POST,value = "/page")
-    public Result page( Integer pageNum,Integer pageSize,String name ){
+    public Result page( Integer pageNum,Integer pageSize,String storeId ){//参数Id
         Result result = new Result();
         result.success("分页获取成功");
-        result.setData(productsService.page(pageNum,pageSize,name));
+        System.out.println(storeId);
+        result.setData(productsService.page(pageNum,pageSize,storeId));//参数Id
         return result;
     }
 

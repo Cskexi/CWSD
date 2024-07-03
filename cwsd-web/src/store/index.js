@@ -6,7 +6,9 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   //前端数据库中共享的数据
-  state: {
+    state: {
+
+    storeId:"",
     user:[
     ],
     count:1,
@@ -64,7 +66,13 @@ export default new Vuex.Store({
         item.sexName = item.sex=='1'?'boy':'girl'
       })
       return lst
-    },
+      },
+      getUserId(state){
+        return state.userId
+      },
+      getStoreId(state){
+        return state.storeId
+      },
     
   },
   //set方法修改state数据
@@ -77,8 +85,13 @@ export default new Vuex.Store({
     },
     setDicMap(state,map){
       state.dicMap = map
-    },
-
+      },
+      setUserId(state,userId){
+        state.userId = userId
+      },
+      setStoreId(state, storeId) {
+        state.storeId = storeId;
+      }
   },
   //预处理数据，让后再存进数据,其他定义的方法
   actions: {

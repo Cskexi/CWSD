@@ -26,12 +26,6 @@ import store from '@/store';
                 <template slot-scope="scope">
                     <el-button
                         size="mini"
-                        @click="dicMgn(scope.row.id)"
-                        style="margin-bottom: 10px"
-                        >分类管理</el-button
-                    ><br />
-                    <el-button
-                        size="mini"
                         type="danger"
                         @click="delOne(scope.row.id)"
                         >删除</el-button
@@ -67,6 +61,7 @@ import store from '@/store';
 //import { getByToken } from '@/api/modules/user'
 import {
     categoriesPage,
+    categoriesList,
     categoriesDeleteByIds,
     categoriesAddOrUpdate
 } from '@/api/modules/categories'
@@ -139,7 +134,7 @@ export default {
                 type: 'warning'
             })
                 .then(() => {
-                    storeDeleteByIds({ ids: ids })
+                    categoriesDeleteByIds({ ids: ids })
                         .then((result) => {
                             this.$message('删除成功')
                             this.loadTableData()

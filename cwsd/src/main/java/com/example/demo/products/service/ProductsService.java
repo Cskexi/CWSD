@@ -21,6 +21,6 @@ public interface ProductsService extends IService<Products> {
     void deleteByIds(String ids);
     List<Products> list();
     List<Products> listSearch(String name);
-    Page<Products> page(Integer pageNum,Integer pageSize);
+    Page<Products> page(Integer pageNum,Integer pageSize,String name);
 
 }

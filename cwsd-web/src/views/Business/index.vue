@@ -1,7 +1,7 @@
 import store from '@/store';
 <template>
     <div class="store-management">
-        商品管理
+        123 商品管理
         <!-- 搜索框和新增按钮 -->
         <el-form
             ref="searchForm"
@@ -24,16 +24,10 @@ import store from '@/store';
                 <template slot-scope="scope">
                     <el-button
                         size="mini"
-                        @click="dicMgn(scope.row.id)"
+                        @click="edit(scope.row)"
                         style="margin-bottom: 10px"
                         >商品管理</el-button
                     ><br />
-                    <!-- <el-button
-                        size="mini"
-                        @click="edit(scope.row)"
-                        style="margin-bottom: 10px"
-                        >商店信息编辑</el-button
-                    ><br /> -->
                     <el-button
                         size="mini"
                         type="danger"
@@ -60,6 +54,7 @@ import store from '@/store';
         <addOrEdit
             v-if="visible"
             :defaultFormDate="obj"
+            :defaultFormDate2="obj2"
             :title="title"
             :visible="visible"
             @close="closeFather"
@@ -68,8 +63,9 @@ import store from '@/store';
 </template>
   
 <script>
+import { categoriesList } from '@/api/modules/categories'
 import { getByToken } from '@/api/modules/user'
-import { productsPage } from '@/api/modules/products'
+import { productsDeleteByIds, productsPage } from '@/api/modules/products'
 import {
     storePage,
     storeDeleteByIds,
@@ -97,7 +93,8 @@ export default {
             selectionIds: [],
             textarea: '',
             value: '',
-            productsData: []
+            productsData: [],
+            categoriesData: []
         }
     },
     created() {
@@ -111,6 +108,11 @@ export default {
         this.userType = getStore('userType')
         this.loadUserData()
         this.loadTableData()
+
+        this.storeType = getStore('storeType')
+
+        //
+        this.storeId = this.$store.getters['getStoreId']
     },
     methods: {
         dicMgn(id) {
@@ -119,12 +121,14 @@ export default {
         },
         edit(row) {
             this.obj = row
+            this.obj2 = this.categoriesData
             this.title = '编辑商店：' + row.name
             this.visible = true
         },
         add() {
             this.visible = true
-            this.obj = { storeId: this.storeData.storeId }
+            this.obj2 = this.categoriesData
+            this.obj = { storeId: this.storeId }
             this.title = '新增'
         },
         closeFather(val) {
@@ -149,7 +153,7 @@ export default {
                 type: 'warning'
             })
                 .then(() => {
-                    storeDeleteByIds({ ids: ids })
+                    productsDeleteByIds({ ids: ids })
                         .then((result) => {
                             this.$message('删除成功')
                             this.loadTableData()
@@ -185,18 +189,32 @@ export default {
 
         // 加载需要的数据
         loadTableData() {
+            categoriesList()
+                .then((result) => {
+                    //this.TableData = result.data.records;
+                    // this.TableData = this.setText(result.data.records);
+                    //this.total = result.data.total;
+
+                    this.categoriesData = result.data
+                    console.log(this.categoriesData)
+                    //console.log(this.UserData)
+                })
+                .catch((err) => {
+                    //console.log("error:"+err)
+                })
             // console.log(this.userId);
             // console.log(this.userType);
             // if (this.userType == 2) {
-            this.searchForm.userId = this.userId
+            this.searchForm.storeId = this.$store.getters['getStoreId']
             // }
+            console.log(this.searchForm)
             productsPage({ ...this.searchForm })
                 .then((result) => {
                     //this.TableData = result.data.records;
                     // this.TableData = this.setText(result.data.records);
                     //this.total = result.data.total;
                     console.log(result.data.records)
-                    this.porductsData = result.data.records
+                    this.productsData = result.data.records
 
                     //console.log(this.UserData)
                 })
