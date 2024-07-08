@@ -64,25 +64,47 @@ public class ProductsController {
         return result;
     }
 
-    @ApiOperation(value = "查询所有记录")
-    @RequestMapping(method = RequestMethod.POST,value = "/listSearch")
-    public Result listSearch(String name){
-        Result result = new Result();
-        result.success("获取list成功");
-        result.setData(productsService.listSearch(name));
-        return result;
-    }
+//    @ApiOperation(value = "查询所有记录")
+//    @RequestMapping(method = RequestMethod.POST,value = "/listSearch")
+//    public Result listSearch(String name){
+//        Result result = new Result();
+//        result.success("获取list成功");
+//        result.setData(productsService.listSearch(name));
+//        return result;
+//    }
 
     @ApiOperation(value = "分页获取记录")
     @ApiImplicitParams({
         @ApiImplicitParam(name = "pageNum",required = true,paramType = "query",value = "当前页码"),
-        @ApiImplicitParam(name = "pageSize",required = true,paramType = "query",value = "每页记录数")
+        @ApiImplicitParam(name = "pageSize",required = true,paramType = "query",value = "每页记录数"),
+            @ApiImplicitParam(name="name",value="搜索关键字",paramType = "query")
     })
     @RequestMapping(method = RequestMethod.POST,value = "/page")
     public Result page( Integer pageNum,Integer pageSize,String name ){
         Result result = new Result();
         result.success("分页获取成功");
         result.setData(productsService.page(pageNum,pageSize,name));
+        return result;
+    }
+
+    @ApiOperation(value = "获取商品详情")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id",required = true,paramType = "query",value = "商品id"),
+    })
+    @RequestMapping(method = RequestMethod.POST,value = "/getMessage")
+    public Result getMessage(String id){
+        Result result = new Result();
+        result.setData(productsService.getById(id));
+        result.success("成功得到商店信息");
+        return result;
+    }
+
+    @ApiOperation(value = "查询所有记录")
+    @RequestMapping(method = RequestMethod.GET,value = "/selectAll")
+    public Result selectAll(Products products){
+        Result result = new Result();
+        result.success("获取list成功");
+        result.setData(productsService.listSearch(products));
         return result;
     }
 

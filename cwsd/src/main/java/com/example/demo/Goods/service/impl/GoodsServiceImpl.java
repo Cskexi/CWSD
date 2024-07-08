@@ -63,6 +63,8 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper,Goods> implements 
     }
 
 
+
+
     @Override
     public Page<Goods> page(Integer pageNum,Integer pageSize, String name, String storeId) {
         Page<Goods> page = new Page(pageNum,pageSize);

@@ -1,56 +1,25 @@
 <template>
-    <el-dialog
-        :title="title"
-        :visible="visible"
-        :before-close="close"
-        append-to-body
-    >
+    <el-dialog :title="title" :visible="visible" :before-close="close" append-to-body>
         <el-form :model="form" ref="form">
             <el-form-item label="性别" prop="sex">
                 <el-input v-model="form.sex" autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item label="电话" prop="telephone">
-                <el-input
-                    v-model="form.telephone"
-                    autocomplete="off"
-                ></el-input>
+                <el-input v-model="form.telephone" autocomplete="off"></el-input>
             </el-form-item>
         </el-form>
         <!-- 上传 -->
-        <el-upload
-            ref="uploadRef"
-            action="#"
-            :file-list="filesList"
-            :http-request="uploadSumit"
-            :auto-upload="false"
-            list-type="picture"
-            :limit="2"
-            :show-file-list="false"
-            :on-change="handleChange"
-        >
+        <el-upload ref="uploadRef" action="#" :file-list="filesList" :http-request="uploadSumit" :auto-upload="false"
+            list-type="picture" :limit="2" :show-file-list="false" :on-change="handleChange">
             <el-button type="primary">选择</el-button>
         </el-upload>
 
         <el-button type="success" @click="uploadClick">上传</el-button>
 
         <div class="image-list">
-            <el-image
-                v-for="(file, index) of filesList"
-                :key="index"
-                :src="file.url"
-                fit="cover"
-            ></el-image>
-            <i
-                class="iconfont icon-delete"
-                v-for="(file, index) of filesList"
-                :key="index"
-                @click="remove(index)"
-            ></i>
-            <i
-                class="iconfont icon-search"
-                v-for="(file, index) of filesList"
-                :key="index"
-            ></i>
+            <el-image v-for="(file, index) of filesList" :key="index" :src="file.url" fit="cover"></el-image>
+            <i class="iconfont icon-delete" v-for="(file, index) of filesList" :key="index" @click="remove(index)"></i>
+            <i class="iconfont icon-search" v-for="(file, index) of filesList" :key="index"></i>
         </div>
         <!-- 到这里 -->
 

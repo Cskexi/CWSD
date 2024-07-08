@@ -8,40 +8,47 @@
                 <el-input v-model="form.price" autocomplete="off"></el-input>
             </el-form-item>
 
+            <el-form-item label="描述" prop="description">
+                <el-input v-model="form.description" autocomplete="off"></el-input>
+            </el-form-item>
+
+            <el-form-item label="折扣" prop="discount">
+                <el-input v-model="form.discount" autocomplete="off"></el-input>
+            </el-form-item>
+
             <el-select v-model="form.categoryId" placeholder="请选择">
-                <el-option
-                    v-for="item in options"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value"
-                >
+                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
                 </el-option>
             </el-select>
 
-            <el-form-item
-                label="库存"
-                prop="inventory"
-                v-if="form.categoryId === '2168c742bb0d69bf4b696f46eb8461e8'"
-            >
-                <el-input
-                    v-model="form.inventory"
-                    autocomplete="off"
-                ></el-input>
+            <el-form-item label="库存" prop="inventory" v-if="form.categoryId === '2168c742bb0d69bf4b696f46eb8461e8'">
+                <el-input v-model="form.inventory" autocomplete="off"></el-input>
             </el-form-item>
-            <!-- 图片上传 -->
-            <el-upload
-                action="#"
-                list-type="picture-card"
-                :http-request="uploadSumit"
-                :on-preview="handlePictureCardPreview"
-                :on-remove="handleRemove"
-                :file-list="filesList"
-            >
-                <i class="el-icon-plus"></i>
+            <!-- 上传 -->
+            <el-upload ref="uploadRef" action="#" :file-list="filesList" :http-request="uploadSumit" :auto-upload="false"
+                list-type="picture" :limit="2" :show-file-list="false" :on-change="handleChange">
+                <el-button type="primary">图片选择</el-button>
             </el-upload>
-            <el-dialog :visible.sync="dialogVisible">
-                <img width="100%" :src="dialogImageUrl" alt="" />
-            </el-dialog>
+
+            <el-button type="success" @click="uploadClick">图片上传</el-button>
+
+            <!-- <el-upload ref="uploadRef" action="#" :file-list="filesList2" :http-request="uploadSumit2" :auto-upload="false"
+                list-type="picture" :limit="2" :show-file-list="false" :on-change="handleChange">
+                <el-button type="primary">视频选择</el-button>
+            </el-upload>
+
+            <el-button type="success" @click="uploadClick">视频上传</el-button> -->
+
+
+
+
+
+
+            <div class="image-list">
+                <el-image v-for="(file, index) of filesList" :key="index" :src="file.url" fit="cover"></el-image>
+                <i class="iconfont icon-delete" v-for="(file, index) of filesList" :key="index" @click="remove(index)"></i>
+            </div>
+            <!-- 到这里 -->
         </el-form>
 
         <div slot="footer" class="dialog-footer">
@@ -76,9 +83,8 @@ export default {
     },
     data() {
         return {
-            dialogImageUrl: '',
-            dialogVisible: false,
-            filesList: [],
+            filesList: [], // 文件列表
+            filesList2: [], // 文件列表
             imageUrl: '',
             flag: false,
             form: {
@@ -86,7 +92,8 @@ export default {
                 price: '',
                 inventory: '',
                 storeId: '',
-                pic: ''
+                pic: '',
+                description: '',
             },
             userId: '',
             options: []
@@ -121,6 +128,21 @@ export default {
         }
     },
     methods: {
+        //变化
+        handleChange(uploadFile, uploadFiles) {
+            if (uploadFiles.length > 1) {
+                uploadFiles.splice(0, 1)
+            }
+            this.filesList = this.$refs.uploadRef.uploadFiles
+            // this.filesList = uploadFiles
+            // console.log(uploadFile, uploadFiles);
+            // uploadFiles.map(item=>{
+            //     item.url = URL.createObjectURL(item.raw)
+            // })
+        },
+        uploadClick() {
+            this.$refs.uploadRef.submit()
+        },
         //上传
         uploadSumit(options) {
             console.log(options)
@@ -149,13 +171,10 @@ export default {
                     console.error(error)
                 })
         },
-        handleRemove(file, fileList) {
-            console.log(file, fileList)
-        },
-        handlePictureCardPreview(file) {
-            this.dialogImageUrl = file.url
-            this.dialogVisible = true
-        },
+
+
+
+
         debug() {
             console.log(this.filesList)
         },
@@ -178,6 +197,7 @@ export default {
                     ) {
                         this.form.inventory = 1
                     }
+                    console.log(this.form)
                     productsAddOrUpdate({
                         ...this.form
                     })
@@ -195,3 +215,12 @@ export default {
     }
 }
 </script>
+
+<style lang="scss">
+.image-list {
+    .el-image {
+        width: 100px;
+        height: 100px;
+    }
+}
+</style>

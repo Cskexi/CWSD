@@ -25,7 +25,7 @@ import javax.xml.crypto.dsig.spec.ExcC14NParameterSpec;
 import static com.example.demo.springboot2023.utils.JwtUtil.validateToken;
 @Service
 @RestController
-@RequestMapping("chapter3/user")
+@RequestMapping("user")
 @Api(tags="User实体的Controller")
 public class UserController {
 
@@ -42,6 +42,10 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.POST,value="/login")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="username",value="用户名",paramType = "query"),
+            @ApiImplicitParam(name="password",value="密码",paramType = "query")
+    })
     @ApiOperation(value = "用户登录接口")
     public Result login(@RequestBody UserLoginDto userLoginDto) throws Exception {
         Result result = new Result();
@@ -61,7 +65,7 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.POST,value="/register")
-    @ApiOperation(value = "用户登录接口")
+    @ApiOperation(value = "用户注册接口")
     public Result register(@RequestBody User user) throws Exception {
         Result result = new Result();
         if(userService.exit(user.getUsername())){
@@ -74,7 +78,7 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.POST,value="/getByToken")
-    @ApiOperation(value = "用户登录接口")
+    @ApiOperation(value = "用户信息获取")
     public Result getByToken(String token) throws Exception {
         Result result = validateToken(token);
         String id = result.getData().toString();
@@ -130,7 +134,7 @@ public class UserController {
         return result;
     }
 
-    @ApiOperation(value = "保存修改Order信息")
+    @ApiOperation(value = "保存修改User信息")
     @RequestMapping(method = RequestMethod.POST, value = "/save")
     public Result addOrUpdate(@RequestBody User user) {
         Result result = new Result();

@@ -58,10 +58,13 @@ public class ProductsServiceImpl extends ServiceImpl<ProductsMapper,Products> im
     }
 
     @Override
-    public List<Products> listSearch(String name) {
+    public List<Products> listSearch(Products products) {
         QueryWrapper<Products> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().eq(Products::getDelFlag,ConstantsUtils.GL_NORMAL);
-        queryWrapper.lambda().like(Products::getName,name);
+        if(StringUtils.isNotBlank(products.getName())) {
+            queryWrapper.lambda().like(Products::getName,products.getName());
+        }
+
         queryWrapper.lambda().orderByDesc(Products::getCreateTime);
         List<Products> list =this.list(queryWrapper);
         return list;

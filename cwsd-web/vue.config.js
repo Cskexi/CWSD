@@ -6,26 +6,26 @@ module.exports = defineConfig({
   },
   transpileDependencies: true,
   publicPath: '/',
-    outputDir: 'dist', // 打包的目录
-    lintOnSave: true, // 在保存时校验格式
-    productionSourceMap: false, // 生产环境是否生成 SourceMap
-    devServer: {
-      open: true, // 启动服务后是否打开浏览器
-      host: 'localhost',
-      port: 8089, // 服务端口
-      https: false,
-      hot: "only",
-      //api/book/save->
-      //http://localhost:8899/spring/book/save
-      proxy: {
-        '/api': { 
-            //名字必须跟application context相同 否则404
-            target: 'http://localhost:8899/spring',
-            changeOrigin: true, //  跨域
-            pathRewrite: {
-                '^/api': ''
-            }
+  outputDir: 'dist', // 打包的目录
+  lintOnSave: true, // 在保存时校验格式
+  productionSourceMap: false, // 生产环境是否生成 SourceMap
+  devServer: {
+    open: true, // 启动服务后是否打开浏览器
+    host: '0.0.0.0',
+    port: 8089, // 服务端口
+    https: false,
+    hot: "only",
+    //api/book/save->
+    //http://localhost:8899/spring/book/save
+    proxy: {
+      '/api': {
+        //名字必须跟application context相同 否则404
+        target: 'http://localhost:8899/spring',
+        changeOrigin: true, //  跨域
+        pathRewrite: {
+          '^/api': ''
         }
+      }
     }, // 设置代理
 
   }

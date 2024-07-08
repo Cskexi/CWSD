@@ -35,7 +35,7 @@ public class MysqlGenerator {
     /**
      * 实体所在的module
      */
-    private static final String moduleName="navigation";
+    private static final String moduleName="videos";
     /**
      * 删除字符: tb_student =>Student
      * 不忽略，则tb_student =>TbStudent
@@ -44,7 +44,7 @@ public class MysqlGenerator {
     /**
      * 数据库表名，支持多个，用,隔开
      */
-    private static final String bean="tb_navigation";
+    private static final String bean="tb_videos";
     /**,tb_book
      * 数据库
      */

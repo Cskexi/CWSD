@@ -54,5 +54,15 @@ public class Products extends BaseEntity {
     @ApiModelProperty(value = "商品类别表ID")
     private String categoryId;
 
+    @ApiModelProperty(value = "折扣")
+    private String  discount;
+
+    @ApiModelProperty(value = "描述")
+    private String  description;
+
+
+
+
+
 
 }

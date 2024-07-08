@@ -3,62 +3,42 @@ import store from '@/store';
     <div class="store-management">
         123 商品管理
         <!-- 搜索框和新增按钮 -->
-        <el-form
-            ref="searchForm"
-            :model="searchForm"
-            :inline="true"
-            class="form-item"
-            label-width="80px"
-        >
+        <el-form ref="searchForm" :model="searchForm" :inline="true" class="form-item" label-width="80px">
             <el-button type="primary" @click="add()">新增商品</el-button>
         </el-form>
         <!-- 商品表 -->
         <el-Table :data="productsData" style="width: 100%">
             <el-Table-column label="名称" prop="name"></el-Table-column>
-
+            <el-table-column label="图片">
+                <template slot-scope="scope">
+                    <el-image v-if="scope.row.pic" class="user-avatar" :src="scope.row.pic" fit="cover"></el-image>
+                </template>
+            </el-table-column>
             <el-Table-column label="商品价格" prop="price"></el-Table-column>
 
             <el-Table-column label="库存" prop="inventory"></el-Table-column>
 
             <el-Table-column label="操作" fixed="right">
                 <template slot-scope="scope">
-                    <el-button
-                        size="mini"
-                        @click="edit(scope.row)"
-                        style="margin-bottom: 10px"
-                        >商品管理</el-button
-                    ><br />
-                    <el-button
-                        size="mini"
-                        type="danger"
-                        @click="delOne(scope.row.id)"
-                        >删除</el-button
-                    >
+                    <el-button size="mini" @click="edit(scope.row)" style="margin-bottom: 10px">商品管理</el-button><br />
+                    <el-button size="mini" @click="edit2(scope.row)" style="margin-bottom: 10px">视频管理</el-button><br />
+                    <el-button size="mini" type="danger" @click="delOne(scope.row.id)">删除</el-button>
                 </template>
             </el-Table-column>
         </el-Table>
         <!-- 分页设置 -->
         <div class="block">
-            <el-pagination
-                @size-change="handleSizeChange"
-                @current-change="handleCurrentChange"
-                :current-page="searchForm.pageNum"
-                :page-sizes="[2, 5, 10, 20]"
-                :page-size="searchForm.pageSize"
-                layout="total, sizes, prev, pager, next, jumper"
-                :total="total"
-            >
+            <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                :current-page="searchForm.pageNum" :page-sizes="[2, 5, 10, 20]" :page-size="searchForm.pageSize"
+                layout="total, sizes, prev, pager, next, jumper" :total="total">
             </el-pagination>
         </div>
         <!-- 新增商品 -->
-        <addOrEdit
-            v-if="visible"
-            :defaultFormDate="obj"
-            :defaultFormDate2="obj2"
-            :title="title"
-            :visible="visible"
-            @close="closeFather"
-        ></addOrEdit>
+        <addOrEdit v-if="visible" :defaultFormDate="obj" :defaultFormDate2="obj2" :title="title" :visible="visible"
+            @close="closeFather"></addOrEdit>
+
+        <videosAdd v-if="visible2" :defaultFormDate="obj3" :title="title" :visible="visible2" @close="closeFather2">
+        </videosAdd>
     </div>
 </template>
   
@@ -74,11 +54,13 @@ import {
 } from '@/api/modules/store'
 import { getStore } from '@/lib/storage'
 import addOrEdit from './module/addOrEdit'
+import videosAdd from './module/videosAdd'
 export default {
-    components: { addOrEdit },
+    components: { addOrEdit, videosAdd },
     data() {
         return {
             visible: false,
+            visible2: false,
             visible_mgn: false,
             storeId: '',
             total: 10,
@@ -110,7 +92,6 @@ export default {
         this.loadTableData()
 
         this.storeType = getStore('storeType')
-
         //
         this.storeId = this.$store.getters['getStoreId']
     },
@@ -125,6 +106,11 @@ export default {
             this.title = '编辑商店：' + row.name
             this.visible = true
         },
+        edit2(row) {
+            this.obj3 = row
+            this.title = '编辑商店：' + row.name
+            this.visible2 = true
+        },
         add() {
             this.visible = true
             this.obj2 = this.categoriesData
@@ -133,6 +119,12 @@ export default {
         },
         closeFather(val) {
             this.visible = false
+            if (val) {
+                this.loadTableData()
+            }
+        },
+        closeFather2(val) {
+            this.visible2 = false
             if (val) {
                 this.loadTableData()
             }
@@ -196,7 +188,7 @@ export default {
                     //this.total = result.data.total;
 
                     this.categoriesData = result.data
-                    console.log(this.categoriesData)
+                    console.log("categoriesData:" + this.categoriesData)
                     //console.log(this.UserData)
                 })
                 .catch((err) => {

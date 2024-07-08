@@ -16,11 +16,11 @@ public class SwaggerConfig {
     @Bean
     public Docket chapter2Api() {
         return new Docket(DocumentationType.SWAGGER_2) // v2 不同
-                .groupName("chapter2")
+                .groupName("cwsd")
                 .apiInfo(
                     new ApiInfoBuilder()
                             //页面标题
-                            .title("chapter2模块 API")
+                            .title("宠物商店 API")
                             //创建人
                            //.contact(new Contact("Bryan", "http://blog.bianxh.top/", ""))
                             //版本号
@@ -30,9 +30,9 @@ public class SwaggerConfig {
                             .build()
                 ).select()
                 //为当前包路径
-                .apis(RequestHandlerSelectors.basePackage("com.example.demo.chapter2.controller"))
+                //.apis(RequestHandlerSelectors.basePackage("com.example.demo.chapter2.controller"))
                 //所有的controller
-                //.apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.any())
                 .build();
     }
 

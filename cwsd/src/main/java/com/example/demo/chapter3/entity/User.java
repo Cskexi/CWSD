@@ -44,4 +44,9 @@ public class User extends BaseEntity {
     @ApiModelProperty(value = "头像")
     private String pic;
 
+    @ApiModelProperty(value = "昵称")
+    private String nickname;
+    @ApiModelProperty(value = "邮件地址")
+    private String email;
+
 }
