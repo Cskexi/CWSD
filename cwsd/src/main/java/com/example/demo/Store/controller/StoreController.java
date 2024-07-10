@@ -1,5 +1,6 @@
 package com.example.demo.Store.controller;
 
+import com.example.demo.products.entity.Products;
 import com.example.demo.springboot2023.utils.Result;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -54,7 +55,7 @@ public class StoreController {
 
 
     @ApiOperation(value = "查询所有记录")
-    @RequestMapping(method = RequestMethod.POST,value = "/list")
+    @RequestMapping(method = RequestMethod.GET,value = "/list")
     public Result list(){
         Result result = new Result();
         result.success("获取list成功");
@@ -98,6 +99,15 @@ public class StoreController {
 
         result.setData(storeService.GetByUserId(userId));
 
+        result.success("成功得到商店信息");
+        return result;
+    }
+
+
+    @RequestMapping(method = RequestMethod.GET,value = "/selectById")
+    public Result selectById(String Id){
+        Result result = new Result();
+        result.setData(storeService.getById(Id));
         result.success("成功得到商店信息");
         return result;
     }

@@ -1,4 +1,4 @@
-package com.example.demo.orderItems.controller;
+package com.example.demo.address.controller;
 
 import com.example.demo.springboot2023.utils.Result;
 import io.swagger.annotations.ApiImplicitParam;
@@ -9,34 +9,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
-import com.example.demo.orderItems.entity.OrderItems;
-import com.example.demo.orderItems.service.OrderItemsService;
+import com.example.demo.address.entity.Address;
+import com.example.demo.address.service.AddressService;
 
 import org.springframework.web.bind.annotation.RestController;
 
 
 /**
  * <p>
- * 子订单表 前端控制器,表的注释
+ * 地址表 前端控制器,表的注释
  * </p>
  *
  * @author Csk
  * @since 2024-07-09
  */
 @RestController
-@RequestMapping("/orderItems/")
-public class OrderItemsController {
+@RequestMapping("/address/")
+public class AddressController {
     @Autowired
-    private OrderItemsService orderItemsService;
+    private AddressService addressService;
 
-    @ApiOperation(value = "保存修改OrderItems信息")
+    @ApiOperation(value = "保存修改Address信息")
     @RequestMapping(method = RequestMethod.POST, value = "/save")
-    public Result addOrUpdate(@RequestBody OrderItems orderItems) {
+    public Result addOrUpdate(@RequestBody Address address) {
         Result result = new Result();
-
         //交给业务去处理，service
-        orderItemsService.addOrUpdate(orderItems);
-
+        result.success("更新成功");
+        result.setData(addressService.addOrUpdate(address));
         return result;
     }
 
@@ -49,7 +48,7 @@ public class OrderItemsController {
     @RequestMapping(method = RequestMethod.POST,value = "/deleteByIds")
     public Result deleteByIds(String ids) {
         Result result = new Result();
-        orderItemsService.deleteByIds(ids);
+        addressService.deleteByIds(ids);
         result.success("删除成功");
         return result;
     }
@@ -60,7 +59,7 @@ public class OrderItemsController {
     public Result list(){
         Result result = new Result();
         result.success("获取list成功");
-        result.setData(orderItemsService.list());
+        result.setData(addressService.list());
         return result;
     }
 
@@ -73,7 +72,7 @@ public class OrderItemsController {
     public Result page( Integer pageNum,Integer pageSize ){
         Result result = new Result();
         result.success("分页获取成功");
-        result.setData(orderItemsService.page(pageNum,pageSize));
+        result.setData(addressService.page(pageNum,pageSize));
         return result;
     }
 

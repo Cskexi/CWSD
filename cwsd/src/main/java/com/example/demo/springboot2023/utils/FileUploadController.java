@@ -1,5 +1,7 @@
 package com.example.demo.springboot2023.utils;
 
+import com.example.demo.videos.service.VideosService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -19,7 +23,8 @@ import java.nio.file.Paths;
 
 @RestController
 public class FileUploadController {
-
+    @Autowired
+    private VideosService videosService;
     @PostMapping("/upload")
     public Result handleFileUpload(@RequestParam("file") MultipartFile file,
                                    @RequestParam("id") String id,
@@ -51,44 +56,28 @@ public class FileUploadController {
             return result;
         }
     }
-
-    @PostMapping("/upload2")
-    public Result uploadFile(@RequestParam("file") MultipartFile file) {
+    @RequestMapping(method = RequestMethod.GET,value = "/deleteFile")
+    public Result deleteFile(@RequestParam("url") String url,
+                             @RequestParam("id") String id) {
         Result result = new Result();
-        try {
-            Path uploadPath = Paths.get("path/to/your/upload/directory");
-            Files.copy(file.getInputStream(), uploadPath.resolve(file.getOriginalFilename()));
-            result.success("File uploaded successfully");
-            return result;
-        } catch (Exception e) {
-            result.fail("上传失败");
-            //return ResponseEntity.status(500).body("Failed to upload file");
-            return result;
-        }
-    }
-
-    @RequestMapping(method = RequestMethod.GET,value = "/getImages")
-    //@GetMapping("/images/{filename:.+}")
-    public Result getImage( String filename) {
-            System.out.println(filename);
-        Result result = new Result();
-        try {
-            Path filePath = Paths.get("D:\\User\\Workspace\\VueProjects\\Charpter1\\xmut-web2\\public\\img\\user\\52841cb4b558d5261e0681ab79ccda46").resolve(filename);
-            Resource resource = new FileSystemResource(filePath.toFile());
-            if (resource.exists()) {
-                result.setData(resource);
-                return result;
-                //return ResponseEntity.ok().body(resource);
+        String folderPath = "D:\\User\\Workspace\\CWSD\\cwsd-web\\public\\";
+        String filePath = folderPath  + url;
+//        try {
+            Path path = Paths.get(filePath);
+            if (Files.exists(path)) {
+                videosService.deleteByIds(id);
+                //Files.delete(path);
+                result.success("文件删除成功");
             } else {
                 result.fail("文件不存在");
-                //return ResponseEntity.notFound().build();
-                return result;
             }
-        } catch (Exception e) {
-            result.fail("下载失败");
-            //return ResponseEntity.status(500).body("Failed to upload file");
             return result;
-            //return ResponseEntity.status(500).build();
-        }
+ //       }
+//        catch (IOException e) {
+//            result.fail("删除文件时发生错误");
+//            return result;
+//        }
     }
+
+
 }

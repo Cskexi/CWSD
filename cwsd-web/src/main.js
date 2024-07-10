@@ -22,11 +22,11 @@ Vue.mixin(myMixin)
 
 
 //axios
-axios.defaults.baseURL="/api"
+axios.defaults.baseURL = "/api"
 
-Vue.use(ElementUI,{
-  size:'small',
-  zIndex:300
+Vue.use(ElementUI, {
+  size: 'small',
+  zIndex: 300
 });
 Vue.config.productionTip = false
 
@@ -36,8 +36,8 @@ Vue.config.productionTip = false
 //   }
 // })
 
-Vue.directive("focus",{
-  inserted:function(el){
+Vue.directive("focus", {
+  inserted: function (el) {
     el.focus()
   }
 })

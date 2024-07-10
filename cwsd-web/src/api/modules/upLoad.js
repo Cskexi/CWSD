@@ -1,11 +1,11 @@
-import { postt } from "@/api/axios"
+import { postt, get } from "@/api/axios"
 
 
 export function upload(params) {
     return postt('upload', params)
 }
 
-export function upload2(params) {
-    return postt('upload2', params)
+export function deleteFile(params) {
+    return get('deleteFile', params)
 }
 

@@ -83,23 +83,12 @@ public class CategoriesServiceImpl extends ServiceImpl<CategoriesMapper,Categori
                 if(categoriesF.getId().equals(categories.getFirstCategoryId())){
                     children.add(categories);
                 }
-//            User user = userService.getById(dictype.getUserId());
-//            dictype.put("user",new User());
-//            if(user!=null){
-//                dictype.put("user",user);
-//            }
             }
             categoriesF.put("children",new ArrayList<>());
             if(!children.isEmpty()){
                 categoriesF.put("children",children);
             }
-//            User user = userService.getById(dictype.getUserId());
-//            dictype.put("user",new User());
-//            if(user!=null){
-//                dictype.put("user",user);
-//            }
         }
-
         return listF;
     }
 

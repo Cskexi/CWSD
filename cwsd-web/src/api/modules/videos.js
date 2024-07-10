@@ -5,7 +5,7 @@ export function videosAddOrUpdate(params) {
 }
 
 export function videosList(params) {
-    return post('videos/list', params)
+    return get('videos/list', params)
 }
 
 export function videosPage(params) {

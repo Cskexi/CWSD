@@ -19,7 +19,7 @@ public interface VideosService extends IService<Videos> {
 
     Boolean addOrUpdate(Videos videos);
     void deleteByIds(String ids);
-    List<Videos> list();
-    Page<Videos> page(Integer pageNum,Integer pageSize);
+    List<Videos> list(String productId);
+    Page<Videos> page(Integer pageNum,Integer pageSize,String category);
 
 }

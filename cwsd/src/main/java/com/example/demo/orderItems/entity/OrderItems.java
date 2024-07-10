@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author Csk
- * @since 2024-07-03
+ * @since 2024-07-09
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -51,5 +51,12 @@ public class OrderItems extends BaseEntity {
     @ApiModelProperty(value = "订单状态 0-未支付 1-已支付 2-已发货 -1申请退单 -2退单成功 -3退单失败")
     private Integer status;
 
+    @ApiModelProperty(value = "用户id")
+    private String userId;
+
+    @ApiModelProperty(value = "订单编号")
+    private String no;
+    @ApiModelProperty(value = "用户id")
+    private String addressId;
 
 }

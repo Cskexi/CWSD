@@ -36,10 +36,8 @@ public class VideosController {
 
         //交给业务去处理，service
         videosService.addOrUpdate(videos);
-
         return result;
     }
-
 
 
     @ApiOperation(value = "批量删除记录")
@@ -56,11 +54,11 @@ public class VideosController {
 
 
     @ApiOperation(value = "查询所有记录")
-    @RequestMapping(method = RequestMethod.POST,value = "/list")
-    public Result list(){
+    @RequestMapping(method = RequestMethod.GET,value = "/list")
+    public Result list(String productId){
         Result result = new Result();
         result.success("获取list成功");
-        result.setData(videosService.list());
+        result.setData(videosService.list(productId));
         return result;
     }
 
@@ -70,11 +68,23 @@ public class VideosController {
         @ApiImplicitParam(name = "pageSize",required = true,paramType = "query",value = "每页记录数")
     })
     @RequestMapping(method = RequestMethod.POST,value = "/page")
-    public Result page( Integer pageNum,Integer pageSize ){
+    public Result page( Integer pageNum,Integer pageSize,String categoryId ){
         Result result = new Result();
         result.success("分页获取成功");
-        result.setData(videosService.page(pageNum,pageSize));
+        result.setData(videosService.page(pageNum,pageSize,categoryId));
         return result;
     }
+
+    @ApiOperation(value = "查询所有记录")
+    @RequestMapping(method = RequestMethod.GET,value = "/addCount")
+    public Result addCount(String id){
+        Result result = new Result();
+        result.success("获取list成功");
+        Videos videos = videosService.getById(id);
+        videos.setViewsCount(videos.getViewsCount()+1);
+        videosService.updateById(videos);
+        return result;
+    }
+
 
 }

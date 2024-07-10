@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.demo.Store.entity.Store;
+import com.example.demo.Store.service.StoreService;
 import com.example.demo.categories.entity.Categories;
 import com.example.demo.chapter3.entity.User;
 import com.example.demo.springboot2023.utils.DateTool;
@@ -11,6 +13,7 @@ import com.example.demo.springboot2023.utils.ConstantsUtils;
 import com.example.demo.products.mapper.ProductsMapper;
 import com.example.demo.products.entity.Products;
 import com.example.demo.products.service.ProductsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +28,9 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 */
 @Service
 public class ProductsServiceImpl extends ServiceImpl<ProductsMapper,Products> implements ProductsService {
+
+    @Autowired
+    private StoreService storeService;
 
     @Override
     public Boolean addOrUpdate(Products products) {
@@ -64,9 +70,15 @@ public class ProductsServiceImpl extends ServiceImpl<ProductsMapper,Products> im
         if(StringUtils.isNotBlank(products.getName())) {
             queryWrapper.lambda().like(Products::getName,products.getName());
         }
-
         queryWrapper.lambda().orderByDesc(Products::getCreateTime);
         List<Products> list =this.list(queryWrapper);
+
+            for(Products products1 : list){
+                Store store = storeService.getById(products1.getStoreId());
+                products1.put("store",store);
+            }
+
+
         return list;
     }
 

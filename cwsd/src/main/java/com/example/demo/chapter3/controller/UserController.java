@@ -77,7 +77,7 @@ public class UserController {
         return result;
     }
 
-    @RequestMapping(method = RequestMethod.POST,value="/getByToken")
+    @RequestMapping(method = RequestMethod.GET,value="/getByToken")
     @ApiOperation(value = "用户信息获取")
     public Result getByToken(String token) throws Exception {
         Result result = validateToken(token);

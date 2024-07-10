@@ -5,6 +5,9 @@
                 <el-input v-model="form.name" autocomplete="off"></el-input>
             </el-form-item>
 
+
+
+
             <!-- 上传 -->
             <el-upload ref="uploadRef" action="#" :file-list="filesList" :http-request="uploadSumit" :auto-upload="false"
                 list-type="picture" :limit="2" :show-file-list="false" :on-change="handleChange">
@@ -18,19 +21,27 @@
                 <i class="iconfont icon-delete" v-for="(file, index) of filesList" :key="index" @click="remove(index)"></i>
             </div> -->
             <!-- 到这里 -->
-        </el-form>
 
+        </el-form>
+        <div class="video-list">
+            <div v-for="(video, index) of videosList" :key="index">
+                <video controls class="video-element">
+                    <source :src="video.videoUrl">
+                </video>
+                <el-button type="danger" @click="deleteVideo(video)">删除</el-button>
+            </div>
+        </div>
         <div slot="footer" class="dialog-footer">
             <el-button @click="close">取 消</el-button>
-            <el-button type="primary" @click="submit">确 定</el-button>
+            <el-button type="primary" @click="close">确 定</el-button>
         </div>
     </el-dialog>
 </template>    
 
 <script>
-import { videosAddOrUpdate } from '@/api/modules/videos'
+import { videosAddOrUpdate, videosList } from '@/api/modules/videos'
 import { setStore, removeStore, getStore } from '@/lib/storage'
-import { upload } from '@/api/modules/upLoad'
+import { upload, deleteFile } from '@/api/modules/upLoad'
 export default {
     name: 'addOrEdit',
     props: {
@@ -61,9 +72,10 @@ export default {
             form2: {
 
             },
-
+            productId: '',
             userId: '',
-            options: []
+            options: [],
+            videosList: [],
         }
     },
     mounted() {
@@ -78,6 +90,8 @@ export default {
         }
         this.userId = getStore('userId')
         this.form2.productId = this.form.id
+        this.productId = this.form.id
+        this.getVideos()
     },
     methods: {
         //变化
@@ -121,7 +135,6 @@ export default {
                     console.error(error)
                 })
         },
-
         debug() {
             console.log(this.filesList)
         },
@@ -130,6 +143,17 @@ export default {
             this.filesList = this.$refs.uploadRef.uploadFiles
         },
         //变化
+        getVideos() {
+            videosList({ productId: this.productId }).then((res) => {
+                //console.log(res)
+                this.videosList = res.data
+            })
+        },
+        deleteVideo(video) {
+            deleteFile({ id: video.id, url: video.videoUrl })
+            this.getVideos()
+            console.log('删除成功')
+        },
 
         close() {
             this.flag = false
@@ -139,3 +163,18 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.video-element {
+    border: 2px solid #ccc;
+    margin-bottom: 20px;
+    height: 300px;
+    /* 或者使用vh单位 */
+    object-fit: cover;
+}
+
+/* 使视频列表中的所有视频具有相同的高度 */
+.video-list {
+    display: flex;
+}
+</style>

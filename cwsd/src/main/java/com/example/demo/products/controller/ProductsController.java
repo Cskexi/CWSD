@@ -108,4 +108,12 @@ public class ProductsController {
         return result;
     }
 
+    @RequestMapping(method = RequestMethod.GET,value = "/selectById")
+    public Result selectById(String Id){
+        Result result = new Result();
+        result.setData(productsService.getById(Id));
+        result.success("成功得到商品信息");
+        return result;
+    }
+
 }

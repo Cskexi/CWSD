@@ -8,6 +8,7 @@ import com.example.demo.Goods.entity.Goods;
 import com.example.demo.Store.vo.StoreUserVO;
 import com.example.demo.chapter3.entity.User;
 import com.example.demo.chapter3.service.UserService;
+import com.example.demo.products.entity.Products;
 import com.example.demo.springboot2023.utils.ConstantsUtils;
 import com.example.demo.springboot2023.utils.DateTool;
 import com.example.demo.Store.mapper.StoreMapper;
@@ -58,7 +59,11 @@ public class StoreServiceImpl extends ServiceImpl<StoreMapper,Store> implements 
 
     @Override
     public List<Store> list() {
-        return this.list();
+        QueryWrapper<Store> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(Store::getDelFlag,ConstantsUtils.GL_NORMAL);
+        queryWrapper.lambda().orderByDesc(Store::getCreateTime);
+        List<Store> list =this.list(queryWrapper);
+        return list;
     }
 
 

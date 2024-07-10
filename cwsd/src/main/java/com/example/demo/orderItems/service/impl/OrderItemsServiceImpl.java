@@ -10,8 +10,13 @@ import com.example.demo.orderItems.mapper.OrderItemsMapper;
 import com.example.demo.orderItems.entity.OrderItems;
 import com.example.demo.orderItems.service.OrderItemsService;
 import org.springframework.stereotype.Service;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
+
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 /**
 * <p>
@@ -19,15 +24,23 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
     * </p>
 *
 * @author Csk
-* @since 2024-07-03
+* @since 2024-07-09
 */
 @Service
 public class OrderItemsServiceImpl extends ServiceImpl<OrderItemsMapper,OrderItems> implements OrderItemsService {
 
     @Override
     public Boolean addOrUpdate(OrderItems orderItems) {
+        Random rand = new Random();
         if(StringUtils.isBlank(orderItems.getId())){
             //add
+            String str ="";
+            for (int i = 0; i < 4; i++) {
+                str = str + (char)(Math.random()*26+'a');
+            }
+            SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmm");
+            String str2=sdf.format(new Date());
+            orderItems.setNo("no"+str2+(rand.nextInt(9000) + 1000)+str);
             orderItems.setCreateTime(DateTool.getCurrTime());
             this.save(orderItems);
         }else{
