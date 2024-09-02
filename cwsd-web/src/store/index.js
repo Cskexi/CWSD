@@ -91,6 +91,7 @@ export default new Vuex.Store({
       },
       setStoreId(state, storeId) {
         state.storeId = storeId;
+        
       }
   },
   //预处理数据，让后再存进数据,其他定义的方法

@@ -1,4 +1,4 @@
-import { postJson, post } from "@/api/axios"
+import { postJson, post, get } from "@/api/axios"
 
 
 export function userAddOrUpdate(params) {
@@ -14,7 +14,7 @@ export function register(params) {
 }
 
 export function getByToken(params) {
-    return post('user/getByToken', params)
+    return get('user/getByToken', params)
 }
 
 export function userList(params) {

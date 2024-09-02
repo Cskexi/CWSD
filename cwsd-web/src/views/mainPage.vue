@@ -13,99 +13,62 @@
                 <h5>导航栏</h5>
                 <el-menu class="el-menu-vertical-demo" default-active="1">
                     <el-menu-item index="1">
-                        <router-link to="/mainPage/PersonalPage"
-                            >个人信息</router-link
-                        >
+                        <router-link to="/mainPage/PersonalPage">个人信息</router-link>
                     </el-menu-item>
-                    <el-menu-item index="2">
-                        <router-link to="/mainPage/ManageUserPage"
-                            >用户管理</router-link
-                        >
+                    <el-menu-item index="2" v-if="user.type === 1">
+                        <router-link to="/mainPage/ManageUserPage">用户管理</router-link>
                     </el-menu-item>
-                    <el-menu-item index="2">
-                        <router-link to="/mainPage/ManageStorePage"
-                            >所有商店管理</router-link
-                        >
+                    <el-menu-item index="2" v-if="user.type === 2">
+                        <router-link to="/mainPage/ManageStorePage">商店管理</router-link>
                     </el-menu-item>
-                    <el-menu-item index="2">
-                        <router-link to="/mainPage/Business"
-                            >商店管理(商家)</router-link
-                        >
-                    </el-menu-item>
-                    <el-menu-item index="2">
+                    <!-- <el-menu-item index="2">
+                        <router-link to="/mainPage/Business">商店管理(商家)</router-link>
+                    </el-menu-item> -->
+                    <!-- <el-menu-item index="2">
                         <router-link to="/mainPage/ManageUserPage"
                             >视频管理</router-link
                         >
+                    </el-menu-item> -->
+                    <!-- <el-menu-item index="2">
+                        <router-link to="/mainPage/ManageOrderPage2">订单管理</router-link>
+                    </el-menu-item> -->
+                    <el-menu-item index="2" v-if="user.type === 1">
+                        <router-link to="/mainPage/Categories">分类管理</router-link>
                     </el-menu-item>
-                    <el-menu-item index="2">
-                        <router-link to="/mainPage/ManageUserPage"
-                            >订单管理</router-link
-                        >
-                    </el-menu-item>
-                    <el-menu-item index="2">
-                        <router-link to="/mainPage/Categories"
-                            >分类管理</router-link
-                        >
-                    </el-menu-item>
-                    <el-menu-item index="2">
-                        <router-link to="/mainPage/ManageUserPage"
-                            >-----完成以上的页面-------</router-link
-                        >
+                    <!-- <el-menu-item index="2">
+                        <router-link to="/mainPage/ManageUserPage">-----完成以上的页面-------</router-link>
                     </el-menu-item>
                     <el-menu-item index="1">
-                        <router-link to="/mainPage/dictype"
-                            >字典管理</router-link
-                        >
+                        <router-link to="/mainPage/dictype">字典管理</router-link>
                     </el-menu-item>
                     <el-menu-item index="3">
-                        <router-link to="/mainPage/ManageStorePage"
-                            >商店信息管理</router-link
-                        >
+                        <router-link to="/mainPage/ManageStorePage">商店信息管理</router-link>
                     </el-menu-item>
                     <el-menu-item index="4">
-                        <router-link to="/mainPage/ManageOrderPage"
-                            >订单信息管理(用户)</router-link
-                        >
+                        <router-link to="/mainPage/ManageOrderPage">订单信息管理(用户)</router-link>
                     </el-menu-item>
                     <el-menu-item index="5">
-                        <router-link to="/mainPage/ManageOrderPage2"
-                            >订单信息管理(管理员)</router-link
-                        >
+                        <router-link to="/mainPage/ManageOrderPage2">订单信息管理(管理员)</router-link>
                     </el-menu-item>
                     <el-menu-item index="6">
-                        <router-link to="/mainPage/ShopcartPage"
-                            >购物车管理</router-link
-                        >
+                        <router-link to="/mainPage/ShopcartPage">购物车管理</router-link>
                     </el-menu-item>
 
                     <el-menu-item index="2" v-if="user.type === 1">
-                        <router-link to="/mainPage/ManageUserPage"
-                            >会员管理</router-link
-                        >
+                        <router-link to="/mainPage/ManageUserPage">会员管理</router-link>
                     </el-menu-item>
-                    <el-menu-item
-                        index="3"
-                        v-if="user.type === 2 || user.type === 1"
-                    >
-                        <router-link to="/mainPage/ManageStorePage"
-                            >商店信息管理</router-link
-                        >
+                    <el-menu-item index="3" v-if="user.type === 2 || user.type === 1">
+                        <router-link to="/mainPage/ManageStorePage">商店信息管理</router-link>
                     </el-menu-item>
                     <el-menu-item index="4" v-if="user.type === 3">
-                        <router-link to="/mainPage/ManageOrderPage"
-                            >订单信息管理(用户)</router-link
-                        >
+                        <router-link to="/mainPage/ManageOrderPage">订单信息管理(用户)</router-link>
                     </el-menu-item>
                     <el-menu-item index="5" v-if="user.type === 2">
-                        <router-link to="/mainPage/ManageOrderPage2"
-                            >订单信息管理(管理员)</router-link
-                        >
+                        <router-link to="/mainPage/ManageOrderPage2">订单信息管理(管理员)</router-link>
                     </el-menu-item>
                     <el-menu-item index="6" v-if="user.type === 3">
-                        <router-link to="/mainPage/ShopcartPage"
-                            >购物车管理</router-link
-                        >
-                    </el-menu-item>
+                        <router-link to="/mainPage/ShopcartPage">购物车管理</router-link>
+                    </el-menu-item> -->
                 </el-menu>
             </el-aside>
             <el-main class="main-content">

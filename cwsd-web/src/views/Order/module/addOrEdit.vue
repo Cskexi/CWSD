@@ -20,6 +20,7 @@
 import { orderAddOrUpdate, orderList } from "@/api/modules/order"
 import { storeAddOrUpdate } from "@/api/modules/store"
 import { setStore, removeStore, getStore } from "@/lib/storage"
+import { orderItemsAddOrUpdate } from '@/api/modules/orderItems'
 export default {
     name: "addOrEdit",
     props: {
@@ -48,8 +49,8 @@ export default {
                 status: 0,
                 refund: "",
                 cancleReason: "",
-                comment:"",
-                refundAdmin:"",
+                comment: "",
+                refundAdmin: "",
             }
         };
     },
@@ -58,7 +59,7 @@ export default {
             this.flag = false
         } else {
             this.form = JSON.parse(JSON.stringify(this.defaultFormDate))
-//            console.log(this.form)
+            //            console.log(this.form)
             this.flag = true;
         }
     },
@@ -71,16 +72,16 @@ export default {
             this.$refs.form.validate(valid => {
                 if (valid) {
                     console.log(this.status);
-                    this.form.status=this.status;
-                    if(this.status==4){
-                        this.form.comment=this.str;
-                    }else if(this.status==-2){
-                        this.form.refund=this.str;
+                    this.form.status = this.status;
+                    if (this.status == 4) {
+                        this.form.comment = this.str;
+                    } else if (this.status == -2) {
+                        this.form.refund = this.str;
                     }
-                    else if(this.status==-5){
-                        this.form.refundAdmin=this.str;
+                    else if (this.status == -5) {
+                        this.form.refundReason = this.str;
                     }
-                    orderAddOrUpdate({
+                    orderItemsAddOrUpdate({
                         ...this.form
                     }).then(res => {
                         this.flag = true

@@ -1,6 +1,4 @@
 <template>
-
-
     <el-dialog :title="title" :visible="visible" :before-close="close">
 
         <el-form :model="form" ref="form">
@@ -12,6 +10,9 @@
             </el-form-item>
             <el-form-item label="电话" prop="telephone">
                 <el-input v-model="form.telephone" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="简介" prop="info">
+                <el-input v-model="form.info" autocomplete="off"></el-input>
             </el-form-item>
         </el-form>
 
@@ -25,7 +26,7 @@
 
 <script>
 import { storeAddOrUpdate } from "@/api/modules/store"
-import {setStore,removeStore,getStore} from "@/lib/storage"
+import { setStore, removeStore, getStore } from "@/lib/storage"
 export default {
     name: "addOrEdit",
     props: {
@@ -49,8 +50,9 @@ export default {
                 address: '',
                 telephone: '',
                 userId: '',
+                info: ''
             },
-            userId:"",
+            userId: "",
         };
     },
     mounted() {
@@ -63,7 +65,7 @@ export default {
             this.flag = true;
         }
         this.userId = getStore("userId")
-        this.form.userId=this.userId;
+        this.form.userId = this.userId;
 
 
     },
@@ -75,7 +77,7 @@ export default {
         submit() {
             this.$refs.form.validate(valid => {
                 if (valid) {
-                    if(this.form.userId==null){
+                    if (this.form.userId == null) {
                         console.log("当前为登录");
                     }
                     storeAddOrUpdate({

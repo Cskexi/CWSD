@@ -57,6 +57,11 @@ public class OrderItems extends BaseEntity {
     @ApiModelProperty(value = "订单编号")
     private String no;
     @ApiModelProperty(value = "用户id")
-    private String addressId;
+    private String address;
+
+    @ApiModelProperty(value = "用户id")
+    private String storeId;
+
+
 
 }

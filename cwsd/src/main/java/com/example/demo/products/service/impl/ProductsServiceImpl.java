@@ -8,6 +8,7 @@ import com.example.demo.Store.entity.Store;
 import com.example.demo.Store.service.StoreService;
 import com.example.demo.categories.entity.Categories;
 import com.example.demo.chapter3.entity.User;
+import com.example.demo.products.dto.ProductsDto;
 import com.example.demo.springboot2023.utils.DateTool;
 import com.example.demo.springboot2023.utils.ConstantsUtils;
 import com.example.demo.products.mapper.ProductsMapper;
@@ -18,6 +19,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import org.springframework.web.bind.annotation.RequestBody;
+
 /**
 * <p>
     * 商品表 服务层实现类
@@ -70,6 +73,9 @@ public class ProductsServiceImpl extends ServiceImpl<ProductsMapper,Products> im
         if(StringUtils.isNotBlank(products.getName())) {
             queryWrapper.lambda().like(Products::getName,products.getName());
         }
+        if(StringUtils.isNotBlank(products.getStoreId())){
+            queryWrapper.lambda().like(Products::getStoreId,products.getStoreId());
+        }
         queryWrapper.lambda().orderByDesc(Products::getCreateTime);
         List<Products> list =this.list(queryWrapper);
 
@@ -81,8 +87,6 @@ public class ProductsServiceImpl extends ServiceImpl<ProductsMapper,Products> im
 
         return list;
     }
-
-
     @Override
     public Page<Products> page(Integer pageNum,Integer pageSize,String name) {
         Page<Products> page = new Page(pageNum,pageSize);
@@ -94,6 +98,45 @@ public class ProductsServiceImpl extends ServiceImpl<ProductsMapper,Products> im
         lambdaQueryWrapper.orderByDesc(Products::getCreateTime);
         page = this.page(page, lambdaQueryWrapper);
         return page;
+    }
+
+    @Override
+    public Page<Products> page2(ProductsDto productsDto) {
+        Page<Products> page = new Page(productsDto.getPageNum(),productsDto.getPageSize());
+        LambdaQueryWrapper<Products> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(Products::getDelFlag, ConstantsUtils.GL_NORMAL);
+        lambdaQueryWrapper.eq(Products::getStatus, 1);
+        if (StringUtils.isNotBlank(productsDto.getName())) {
+
+            lambdaQueryWrapper.like(Products::getName, productsDto.getName());
+        }
+        if (StringUtils.isNotBlank(productsDto.getCategoryId())) {
+            lambdaQueryWrapper.like(Products::getCategoryId, productsDto.getCategoryId());
+        }
+        if (StringUtils.isNotBlank(productsDto.getStoreId())) {
+            lambdaQueryWrapper.like(Products::getStoreId, productsDto.getStoreId());
+        }
+        //lambdaQueryWrapper.orderByDesc(Products::getCreateTime);
+        lambdaQueryWrapper.orderByDesc(Products::getSoldQuantity);
+        page = this.page(page, lambdaQueryWrapper);
+        return page;
+    }
+
+    @Override
+    public Products getById2(String id) {
+        Products products= this.getById(id);
+        Store store = storeService.getById(products.getStoreId());
+        products.put("store",store);
+        return products;
+    }
+
+    @Override
+    public void viewChange() {
+        baseMapper.createTempTable();
+        baseMapper.insertIntoTempTable();
+        baseMapper.updateGoodsView();
+        baseMapper.dropTempTable();
+        System.out.println("Browse counts updated successfully.");
     }
 
 }

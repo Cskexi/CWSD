@@ -1,7 +1,7 @@
 import store from '@/store';
 <template>
     <div class="store-management">
-        123 商品管理
+        1233 商品管理
         <!-- 搜索框和新增按钮 -->
         <el-form ref="searchForm" :model="searchForm" :inline="true" class="form-item" label-width="80px">
             <el-button type="primary" @click="add()">新增商品</el-button>
@@ -45,7 +45,9 @@ import store from '@/store';
 <script>
 import { categoriesList } from '@/api/modules/categories'
 import { getByToken } from '@/api/modules/user'
-import { productsDeleteByIds, productsPage } from '@/api/modules/products'
+
+import { orderItemsPage } from '@/api/modules/orderItems'
+import { productsDeleteByIds, productsPage, productsPage2 } from '@/api/modules/products'
 import {
     storePage,
     storeDeleteByIds,
@@ -88,12 +90,13 @@ export default {
         this.userId = getStore('userId')
         //console.log(this.userId)
         this.userType = getStore('userType')
-        this.loadUserData()
-        this.loadTableData()
-
         this.storeType = getStore('storeType')
         //
         this.storeId = this.$store.getters['getStoreId']
+        console.log("3213:" + getStore("storeId"))
+        this.searchForm.storeId = getStore("storeId")
+        this.loadUserData()
+        this.loadTableData()
     },
     methods: {
         dicMgn(id) {
@@ -197,10 +200,10 @@ export default {
             // console.log(this.userId);
             // console.log(this.userType);
             // if (this.userType == 2) {
-            this.searchForm.storeId = this.$store.getters['getStoreId']
+            // this.searchForm.storeId = this.$store.getters['getStoreId']
             // }
-            console.log(this.searchForm)
-            productsPage({ ...this.searchForm })
+            this.searchForm.storeId = getStore("storeId")
+            productsPage2({ ...this.searchForm })
                 .then((result) => {
                     //this.TableData = result.data.records;
                     // this.TableData = this.setText(result.data.records);

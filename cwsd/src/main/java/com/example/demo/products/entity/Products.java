@@ -49,7 +49,7 @@ public class Products extends BaseEntity {
     private Integer inventory;
 
     @ApiModelProperty(value = "状态 1-正常 0-下架")
-    private Integer state;
+    private Integer status;
 
     @ApiModelProperty(value = "商品类别表ID")
     private String categoryId;
@@ -59,6 +59,12 @@ public class Products extends BaseEntity {
 
     @ApiModelProperty(value = "描述")
     private String  description;
+
+    @ApiModelProperty(value = "售出数量")
+    private Integer soldQuantity;
+
+    @ApiModelProperty(value = "浏览次数")
+    private Integer view;
 
 
 

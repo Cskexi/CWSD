@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 1
+ Source Server         : CskMySql
  Source Server Type    : MySQL
  Source Server Version : 80034
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 80034
  File Encoding         : 65001
 
- Date: 27/06/2024 10:08:45
+ Date: 11/07/2024 10:08:33
 */
 
 SET NAMES utf8mb4;
@@ -50,32 +50,47 @@ DROP TABLE IF EXISTS `tb_address`;
 CREATE TABLE `tb_address`  (
   `id` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '主键UUID',
   `user_id` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '用户id',
-  `address` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '地址',
+  `detail` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '详细地址',
   `create_time` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '创建时间 YYYY-MM-DD hh:mm:ss',
-  `del_flag` tinyint NULL DEFAULT NULL COMMENT '是否删除 1-正常 0-已删除',
+  `del_flag` tinyint(1) NULL DEFAULT 1 COMMENT '是否删除 1-正常 0-已删除',
+  `userName` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '收件人姓名',
+  `telNumber` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '收件人电话',
+  `postalCode` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT '0' COMMENT '邮政编码',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = '地址表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_address
 -- ----------------------------
+INSERT INTO `tb_address` VALUES ('0335ae122affc72238c258d4a3e2a632', '787aa81904875242219d0ee5de16c3b5', '广东省广州市海珠区新港中路397号', '2024-07-11 00:43:03', 1, '张三', '020-81167888', '510000');
+INSERT INTO `tb_address` VALUES ('0ea6e77dcdeda64f4cb22bd089766233', '787aa81904875242219d0ee5de16c3b5', '广东省广州市海珠区新港中路397号', '2024-07-11 00:54:24', 1, '张三', '020-81167888', '510000');
+INSERT INTO `tb_address` VALUES ('26808d5e9f8e971f39e6d351e6804d1b', '787aa81904875242219d0ee5de16c3b5', '广东省广州市海珠区新港中路397号', '2024-07-11 01:09:46', 1, '张三', '020-81167888', '510000');
+INSERT INTO `tb_address` VALUES ('69d32e6b6e6476ab2df8f1a97da5d5ea', '787aa81904875242219d0ee5de16c3b5', '广东省广州市海珠区新港中路397号', '2024-07-11 01:06:50', 1, '张三', '020-81167888', '510000');
+INSERT INTO `tb_address` VALUES ('6afc097823e4017e77c8803016929d4e', '787aa81904875242219d0ee5de16c3b5', '广东省广州市海珠区新港中路397号', '2024-07-11 00:53:33', 1, '张三', '020-81167888', '510000');
+INSERT INTO `tb_address` VALUES ('7c7588f4aecf5d6b1b37a52f60b98754', '787aa81904875242219d0ee5de16c3b5', '广东省广州市海珠区新港中路397号', '2024-07-11 00:58:38', 1, '张三', '020-81167888', '510000');
+INSERT INTO `tb_address` VALUES ('92b6fc1d4f5b3f8fcf0ad31443d804fd', '787aa81904875242219d0ee5de16c3b5', '广东省广州市海珠区新港中路397号', '2024-07-11 01:06:20', 1, '张三', '020-81167888', '510000');
+INSERT INTO `tb_address` VALUES ('b4d464e64b3c04d10dbda5630bf8d8ad', '787aa81904875242219d0ee5de16c3b5', '广东省广州市海珠区新港中路397号', '2024-07-11 00:57:39', 1, '张三', '020-81167888', '510000');
+INSERT INTO `tb_address` VALUES ('c251bbc87d373cae08550683ae1a004d', '787aa81904875242219d0ee5de16c3b5', '广东省广州市海珠区新港中路397号', '2024-07-11 01:05:16', 1, '张三', '020-81167888', '510000');
+INSERT INTO `tb_address` VALUES ('c982c824f979c640e5384f0fca5880dd', '787aa81904875242219d0ee5de16c3b5', '广东省广州市海珠区新港中路397号', '2024-07-11 00:55:57', 1, '张三', '020-81167888', '510000');
+INSERT INTO `tb_address` VALUES ('fd9ba2ad1a2f6bdcf9f81e2003215421', '787aa81904875242219d0ee5de16c3b5', '广东省广州市海珠区新港中路397号', '2024-07-11 00:43:45', 1, '张三', '020-81167888', '510000');
 
 -- ----------------------------
--- Table structure for tb_cartltems
+-- Table structure for tb_cart
 -- ----------------------------
-DROP TABLE IF EXISTS `tb_cartltems`;
-CREATE TABLE `tb_cartltems`  (
+DROP TABLE IF EXISTS `tb_cart`;
+CREATE TABLE `tb_cart`  (
   `id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键UUID',
   `user_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '用户id，关联user表',
   `product_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '物品id，关联goods表',
   `create_time` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建时间 YYYY-MM-DD hh:mm:ss',
   `del_flag` tinyint(1) NULL DEFAULT 1 COMMENT '是否删除 1-正常 0-已删除',
   `number` int NULL DEFAULT NULL COMMENT '物品数量',
+  `selected` tinyint NULL DEFAULT 0 COMMENT '是否勾选 1-已勾选 0-未勾选',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '订单表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '购物车表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
--- Records of tb_cartltems
+-- Records of tb_cart
 -- ----------------------------
 
 -- ----------------------------
@@ -90,16 +105,14 @@ CREATE TABLE `tb_categories`  (
   `parent_category_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '上一级类别',
   `first_category_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '最高级类别',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '字典表 ' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '分类表 ' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_categories
 -- ----------------------------
-INSERT INTO `tb_categories` VALUES ('1d5f89c550ea46a1767cebea84c31ffd', '小猫', '2024-06-27 09:50:41', 1, '49468015a68a3370ae065a12d2b5e6ac', NULL);
+INSERT INTO `tb_categories` VALUES ('2168c742bb0d69bf4b696f46eb8461e8', '商品', '2024-07-01 10:28:53', 1, NULL, NULL);
 INSERT INTO `tb_categories` VALUES ('49468015a68a3370ae065a12d2b5e6ac', '猫', '2024-06-27 09:48:46', 1, NULL, NULL);
-INSERT INTO `tb_categories` VALUES ('59cdc14599cc397f0fb49263730f1cd0', '大猫', '2024-06-27 09:52:00', 1, '49468015a68a3370ae065a12d2b5e6ac', '49468015a68a3370ae065a12d2b5e6ac');
-INSERT INTO `tb_categories` VALUES ('9ad6361b701d4d095c2ec72a23ad3e82', '小小狗', '2024-06-27 09:53:27', 1, 'bd2d8fb5b9f69985370b5b3818f3af87', 'fcd869c75f579f168c373c7943c25f70');
-INSERT INTO `tb_categories` VALUES ('bd2d8fb5b9f69985370b5b3818f3af87', '小狗', '2024-06-27 09:52:25', 1, 'fcd869c75f579f168c373c7943c25f70', 'fcd869c75f579f168c373c7943c25f70');
+INSERT INTO `tb_categories` VALUES ('d599dd594d67aa69c3437f0fe6447a3f', '服务', '2024-06-27 11:48:51', 1, NULL, NULL);
 INSERT INTO `tb_categories` VALUES ('fcd869c75f579f168c373c7943c25f70', '狗', '2024-06-27 09:49:19', 1, NULL, NULL);
 
 -- ----------------------------
@@ -183,6 +196,29 @@ INSERT INTO `tb_goods` VALUES ('b1c7ba2d1fe86778e9f63f51fd7071ec', '浴巾纯棉
 INSERT INTO `tb_goods` VALUES ('bcd211c310f67be100af087083cd53a1', '无印良品被芯', '/img/goods/bcd211c310f67be100af087083cd53a1/PixPin_2023-12-24_19-39-52.png', '2023-12-24 19:39:45', 1, '3a2884bf6706ae06ad25f7809eee77bd', 213.00, 1111, NULL);
 
 -- ----------------------------
+-- Table structure for tb_navigation
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_navigation`;
+CREATE TABLE `tb_navigation`  (
+  `id` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '主键UUID',
+  `name` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '名称',
+  `image_src` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '图片路径',
+  `create_time` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '创建时间 YYYY-MM-DD hh:mm:ss',
+  `del_flag` tinyint NULL DEFAULT 1 COMMENT '是否删除 1-正常 0-已删除',
+  `open_type` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '导航链接类型',
+  `navigator_url` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '导航链接路径',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = '地址表' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of tb_navigation
+-- ----------------------------
+INSERT INTO `tb_navigation` VALUES ('0d8ad56a30cb5d99a63dbc2a36087ee0', '分类2', '../../static/tab_icons/cate.png', '2024-06-30 20:02:07', 1, NULL, NULL);
+INSERT INTO `tb_navigation` VALUES ('140b9ff908f80e8107e027461c2aa200', '分类', '../../static/tab_icons/cate.png', '2024-06-30 20:02:20', 1, 'switchTab', '/pages/category/main');
+INSERT INTO `tb_navigation` VALUES ('447c1a78269c9af092262e917fe26fce', '分类3', '../../static/tab_icons/cate.png', '2024-06-30 20:02:05', 1, NULL, NULL);
+INSERT INTO `tb_navigation` VALUES ('57159ce1ebe3fd7e8dc48086efea7304', '分类4', '../../static/tab_icons/cate.png', '2024-06-30 20:02:02', 1, NULL, NULL);
+
+-- ----------------------------
 -- Table structure for tb_order
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_order`;
@@ -242,18 +278,29 @@ INSERT INTO `tb_order_item` VALUES ('de38cefd1672e49d612dc92bdb0b7314', 'f54c213
 DROP TABLE IF EXISTS `tb_order_items`;
 CREATE TABLE `tb_order_items`  (
   `id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键UUID',
-  `orders_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '编号id，关联order表',
-  `product_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '物品id，关联goods表',
+  `orders_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '编号id，关联order表',
+  `product_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '物品id，关联products表',
   `create_time` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建时间 YYYY-MM-DD hh:mm:ss',
   `del_flag` tinyint(1) NULL DEFAULT 1 COMMENT '是否删除 1-正常 0-已删除',
   `number` int NULL DEFAULT NULL COMMENT '物品数量',
   `price_at_order` int NULL DEFAULT NULL COMMENT '订单时的价格',
+  `refund_reason` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '退单理由',
+  `status` tinyint(1) NULL DEFAULT 0 COMMENT '订单状态 0-未支付 1-已支付 2-已发货 -1申请退单 -2退单成功 -3退单失败',
+  `user_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户id',
+  `no` varchar(48) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '订单编号',
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '地址id',
+  `store_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商店id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '订单表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '子订单表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_order_items
 -- ----------------------------
+INSERT INTO `tb_order_items` VALUES ('033b4dc0356319c50d4f9d8c04cb1325', NULL, '32114b3f10227efd034e3890322a0769', '2024-07-11 09:47:10', 1, 4, 39, NULL, 0, '787aa81904875242219d0ee5de16c3b5', 'no2024071109471627zpho', '福建省厦门市集美区侨英街道厦门理工学院学生公寓·东区(天马路西)', '4d4cea8b200c5e80ce93384bbc6697ed');
+INSERT INTO `tb_order_items` VALUES ('278da678ead0b08f3d11b5476e9183e0', NULL, '07905d577bb86e9acfdfca4ecc853ba8', '2024-07-11 09:23:29', 1, 1, 9, NULL, 1, '220d3c190170386d0985be08754ebf45', 'no2024071109234447kqmi', '福建省厦门市集美区侨英街道厦门理工学院学生公寓·东区(天马路西)', 'be23fb1551c1977e6208c351691d315f');
+INSERT INTO `tb_order_items` VALUES ('435689af988de70fb7a2b2aad7ef0169', NULL, '9b9eb6c6456b3a2a824b5cc555ba6a2a', '2024-07-11 08:24:33', 1, 1, 120, NULL, 0, '787aa81904875242219d0ee5de16c3b5', 'no2024071108246435zmog', '广东省广州市海珠区新港中路397号', '');
+INSERT INTO `tb_order_items` VALUES ('6121e84062c810de43a9e24e7d010804', NULL, '5dd4e1f3092dc6bad70cc2e4f90617f7', '2024-07-11 01:13:58', 1, 1, 2, NULL, 3, '787aa81904875242219d0ee5de16c3b5', 'no2024071101131062vjyz', '广东省广州市海珠区新港中路397号', '4d4cea8b200c5e80ce93384bbc6697ed');
+INSERT INTO `tb_order_items` VALUES ('fd4a8d68c0185b55cb1aace5b506d4a4', NULL, '07905d577bb86e9acfdfca4ecc853ba8', '2024-07-11 09:46:33', 1, 16, 9, NULL, 1, '787aa81904875242219d0ee5de16c3b5', 'no2024071109463719mgis', '福建省厦门市集美区侨英街道厦门理工学院学生公寓·东区(天马路西)', 'be23fb1551c1977e6208c351691d315f');
 
 -- ----------------------------
 -- Table structure for tb_orders
@@ -266,73 +313,12 @@ CREATE TABLE `tb_orders`  (
   `create_time` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建时间 YYYY-MM-DD hh:mm:ss',
   `del_flag` tinyint(1) NULL DEFAULT 1 COMMENT '是否删除 1-正常 0-已删除',
   `total_price` double(10, 2) NULL DEFAULT NULL COMMENT '订单总价',
-  `status` int NULL DEFAULT 0 COMMENT '订单状态',
-  `refund` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '退单理由',
-  `refund_admin` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '管理员的退单审核结果',
-  `cancle_reason` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '订单取消原因\r\n',
+  `status` tinyint(1) NULL DEFAULT 0 COMMENT '订单状态 0-未支付 1-已支付 2-已发货 -1取消订单 -2申请退单',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '订单表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_orders
--- ----------------------------
-
--- ----------------------------
--- Table structure for tb_pet
--- ----------------------------
-DROP TABLE IF EXISTS `tb_pet`;
-CREATE TABLE `tb_pet`  (
-  `id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键UUID',
-  `name` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '商品名字',
-  `create_time` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建时间 YYYY-MM-DD hh:mm:ss',
-  `del_flag` tinyint(1) NULL DEFAULT 1 COMMENT '是否删除 1-正常 0-已删除',
-  `category_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '关联tb_商品类别表',
-  `price` double(10, 2) NULL DEFAULT NULL COMMENT '价格',
-  `species` tinyint NULL DEFAULT 0 COMMENT '宠物种类',
-  `age` int NULL DEFAULT NULL COMMENT '年龄',
-  `gender` tinyint(1) NULL DEFAULT NULL COMMENT '性别',
-  `products` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品表id',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品表' ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of tb_pet
--- ----------------------------
-
--- ----------------------------
--- Table structure for tb_product_mages
--- ----------------------------
-DROP TABLE IF EXISTS `tb_product_mages`;
-CREATE TABLE `tb_product_mages`  (
-  `id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键UUID',
-  `product_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '物品id，关联goods表',
-  `create_time` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建时间 YYYY-MM-DD hh:mm:ss',
-  `del_flag` tinyint(1) NULL DEFAULT 1 COMMENT '是否删除 1-正常 0-已删除',
-  `path` int NULL DEFAULT NULL COMMENT '路径',
-  `sortOrder` int NULL DEFAULT NULL COMMENT '排序序号',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '订单表' ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of tb_product_mages
--- ----------------------------
-
--- ----------------------------
--- Table structure for tb_product_videos
--- ----------------------------
-DROP TABLE IF EXISTS `tb_product_videos`;
-CREATE TABLE `tb_product_videos`  (
-  `id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键UUID',
-  `product_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '物品id，关联goods表',
-  `create_time` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建时间 YYYY-MM-DD hh:mm:ss',
-  `del_flag` tinyint(1) NULL DEFAULT 1 COMMENT '是否删除 1-正常 0-已删除',
-  `path` int NULL DEFAULT NULL COMMENT '路径',
-  `description` int NULL DEFAULT NULL COMMENT '描述',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '订单表' ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of tb_product_videos
 -- ----------------------------
 
 -- ----------------------------
@@ -348,15 +334,37 @@ CREATE TABLE `tb_products`  (
   `store_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '所属商店id,关联tb_store表',
   `price` double(10, 2) NULL DEFAULT NULL COMMENT '价格',
   `inventory` int NULL DEFAULT 0 COMMENT '库存',
-  `state` tinyint(1) NULL DEFAULT NULL COMMENT '状态 1-正常 0-下架',
+  `status` tinyint(1) NULL DEFAULT 1 COMMENT '状态 1-正常 2-售罄',
   `category_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品类别表ID',
-  `pet_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '宠物表id',
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品描述',
+  `sold_quantity` int NULL DEFAULT 0 COMMENT '已出售数量',
+  `discount` double(11, 2) NULL DEFAULT 1.00 COMMENT '折扣',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_products
 -- ----------------------------
+INSERT INTO `tb_products` VALUES ('07905d577bb86e9acfdfca4ecc853ba8', '猫咪舔舔乐', '/img/products/07905d577bb86e9acfdfca4ecc853ba8/屏幕截图 2024-07-11 003327.png', '2024-07-11 00:33:19', 1, 'be23fb1551c1977e6208c351691d315f', 9.90, 13, 1, '2168c742bb0d69bf4b696f46eb8461e8', '网红爆款猫咪薄荷球卡通可爱风猫咪舔舔乐旋转球棒棒糖零食猫玩具', 0, 1.00);
+INSERT INTO `tb_products` VALUES ('0e5de64009e8b081789fc6123f91d5f6', '边境牧羊犬', '/img/products/0e5de64009e8b081789fc6123f91d5f6/边牧.JPG', '2024-07-11 00:27:29', 1, '8de6dc690598aa97187579cb8b655fa9', 2500.00, 1, 1, 'fcd869c75f579f168c373c7943c25f70', '最聪明的狗狗', 0, 0.95);
+INSERT INTO `tb_products` VALUES ('136f53f82c9261f8b30fc437017a6cec', '宠物冰窝', '/img/products/136f53f82c9261f8b30fc437017a6cec/屏幕截图 2024-07-11 002035.png', '2024-07-11 00:19:04', 1, 'be23fb1551c1977e6208c351691d315f', 65.00, 12, 1, '2168c742bb0d69bf4b696f46eb8461e8', '猫空调房DIY宠物冰窝夏季猫咪降温神器防抓加厚可折叠防暑猫咪', 0, 1.00);
+INSERT INTO `tb_products` VALUES ('1efb7c7c073ea7a42876a7f3847e2d36', '宠物除毛器', '/img/products/1efb7c7c073ea7a42876a7f3847e2d36/屏幕截图 2024-07-11 002954.png', '2024-07-11 00:31:09', 1, 'be23fb1551c1977e6208c351691d315f', 12.00, 96, 1, '2168c742bb0d69bf4b696f46eb8461e8', '小蜜蜂粘毛器宠物除毛器滚筒式粘毛器毛发清理器粘毛刷猫咪衣物除毛', 0, 1.00);
+INSERT INTO `tb_products` VALUES ('32114b3f10227efd034e3890322a0769', '营养猫粮', '/img/products/32114b3f10227efd034e3890322a0769/猫粮2.jpg', '2024-07-11 00:00:02', 1, '4d4cea8b200c5e80ce93384bbc6697ed', 39.90, 447, 1, '2168c742bb0d69bf4b696f46eb8461e8', '防止掉毛', 0, 1.00);
+INSERT INTO `tb_products` VALUES ('5dd4e1f3092dc6bad70cc2e4f90617f7', '逗猫棒', '/img/products/5dd4e1f3092dc6bad70cc2e4f90617f7/逗猫棒.jpg', '2024-07-11 00:23:49', 1, '4d4cea8b200c5e80ce93384bbc6697ed', 2.80, 142, 1, '2168c742bb0d69bf4b696f46eb8461e8', '逗猫神器', 0, 1.00);
+INSERT INTO `tb_products` VALUES ('68a20cd1cc5999a76c6d5769efa500fa', '通用型猫粮', '/img/products/68a20cd1cc5999a76c6d5769efa500fa/猫粮1.jpg', '2024-07-10 23:50:43', 1, '4d4cea8b200c5e80ce93384bbc6697ed', 18.80, 256, 1, '2168c742bb0d69bf4b696f46eb8461e8', '大小猫都能吃', 0, 1.00);
+INSERT INTO `tb_products` VALUES ('7418d1c2ae4c2aa44231ea9652a02c08', '金毛', '/img/products/undefined/金毛.JPG', '2024-07-11 00:27:01', 1, '8de6dc690598aa97187579cb8b655fa9', 1999.00, 1, 1, 'fcd869c75f579f168c373c7943c25f70', '小天使', 0, 0.99);
+INSERT INTO `tb_products` VALUES ('791c9aaeed17eccdb76923468a0d5490', '牛肉味冻干狗粮', '/img/products/791c9aaeed17eccdb76923468a0d5490/狗粮2.jpg', '2024-07-10 23:56:21', 1, '4d4cea8b200c5e80ce93384bbc6697ed', 16.99, 845, 1, '2168c742bb0d69bf4b696f46eb8461e8', '高钙美毛', 0, 0.85);
+INSERT INTO `tb_products` VALUES ('81f84f07d7d3dd71345cf4dfdced72f4', '金渐层矮脚妹妹', '/img/products/81f84f07d7d3dd71345cf4dfdced72f4/IMG_9316(20240710-234829).JPG', '2024-07-10 23:47:36', 1, '50bc1bbdb07a47b3f0aff3587822b293', 3000.00, 1, 1, '49468015a68a3370ae065a12d2b5e6ac', '金渐层矮脚猫咪', 0, 0.96);
+INSERT INTO `tb_products` VALUES ('9b9eb6c6456b3a2a824b5cc555ba6a2a', '半自动猫砂盆', '/img/products/undefined/屏幕截图 2024-07-11 002212.png', '2024-07-11 00:23:07', 1, '', 120.50, 62, 1, '2168c742bb0d69bf4b696f46eb8461e8', '半自动猫砂盆全封闭半智能猫厕所超大号隔臭防带砂猫屎盆用品', 0, 1.00);
+INSERT INTO `tb_products` VALUES ('a65c57138b60fc590c7de7c08990e68a', '100支装猫条', '/img/products/a65c57138b60fc590c7de7c08990e68a/猫条1.jpg', '2024-07-11 00:08:21', 0, '4d4cea8b200c5e80ce93384bbc6697ed', 25.69, 784, 1, '2168c742bb0d69bf4b696f46eb8461e8', '经典鲜肉 小鱼干 ', 0, 1.00);
+INSERT INTO `tb_products` VALUES ('acef5b0cc70e39138d584897ecede7b8', '半自动猫砂盆', '/img/products/undefined/屏幕截图 2024-07-11 002212.png', '2024-07-11 00:23:09', 1, 'be23fb1551c1977e6208c351691d315f', 120.50, 63, 1, '2168c742bb0d69bf4b696f46eb8461e8', '半自动猫砂盆全封闭半智能猫厕所超大号隔臭防带砂猫屎盆用品', 0, 1.00);
+INSERT INTO `tb_products` VALUES ('b4599dd2c6d4b2120e0388c2a72120b8', '60只装猫条', '/img/products/b4599dd2c6d4b2120e0388c2a72120b8/猫条2.jpg', '2024-07-11 00:21:10', 1, '4d4cea8b200c5e80ce93384bbc6697ed', 16.68, 786, 1, '2168c742bb0d69bf4b696f46eb8461e8', '真的太香了，，买买买', 0, 1.00);
+INSERT INTO `tb_products` VALUES ('b56f09e5b52864c814288df7dbb692e2', '金毛', '/img/products/undefined/金毛.JPG', '2024-07-11 00:27:00', 0, '8de6dc690598aa97187579cb8b655fa9', 1999.00, 1, 1, 'fcd869c75f579f168c373c7943c25f70', '小天使', 0, 0.99);
+INSERT INTO `tb_products` VALUES ('bbe89d931f5c7bb14b5316c6ee909d1b', '缅因猫（灰色）', '/img/products/bbe89d931f5c7bb14b5316c6ee909d1b/IMG_9317(20240710-235047).JPG', '2024-07-10 23:51:37', 1, '50bc1bbdb07a47b3f0aff3587822b293', 3500.00, 1, 1, '49468015a68a3370ae065a12d2b5e6ac', '灰白色的缅因猫', 0, 0.99);
+INSERT INTO `tb_products` VALUES ('c1694480c80e91a22e0d8689ffb5e882', '100只装猫条', '/img/products/c1694480c80e91a22e0d8689ffb5e882/猫条1.jpg', '2024-07-11 00:16:15', 1, '4d4cea8b200c5e80ce93384bbc6697ed', 25.69, 789, 1, '2168c742bb0d69bf4b696f46eb8461e8', '鲜肉小鱼干', 0, 1.00);
+INSERT INTO `tb_products` VALUES ('cda10c7d3a08a44d5412adc5d290f9a2', '存皓狗粮 5kg 狗狗都爱吃', '/img/products/cda10c7d3a08a44d5412adc5d290f9a2/狗粮1.jpg', '2024-07-10 23:43:31', 1, '4d4cea8b200c5e80ce93384bbc6697ed', 38.80, 999, 1, '2168c742bb0d69bf4b696f46eb8461e8', '万人种草，买买买', 0, 0.85);
+INSERT INTO `tb_products` VALUES ('eaa7d2a128139562ad97e3399c4c7ecd', '美国短毛猫', '/img/products/eaa7d2a128139562ad97e3399c4c7ecd/IMG_9318(20240710-235308).JPG', '2024-07-10 23:53:31', 1, '50bc1bbdb07a47b3f0aff3587822b293', 1999.00, 1, 1, '49468015a68a3370ae065a12d2b5e6ac', '美国佬', 0, 0.95);
+INSERT INTO `tb_products` VALUES ('f38810ccc6ad4a3b6648cf2ce45492b9', '缅因猫（白金）', '/img/products/f38810ccc6ad4a3b6648cf2ce45492b9/缅因猫.JPG', '2024-07-10 23:57:48', 1, '50bc1bbdb07a47b3f0aff3587822b293', 3699.00, 1, 1, '49468015a68a3370ae065a12d2b5e6ac', '白金色猫咪', 0, 1.00);
 
 -- ----------------------------
 -- Table structure for tb_reviews
@@ -368,32 +376,13 @@ CREATE TABLE `tb_reviews`  (
   `product_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '物品id，关联goods表',
   `create_time` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建时间 YYYY-MM-DD hh:mm:ss',
   `del_flag` tinyint(1) NULL DEFAULT 1 COMMENT '是否删除 1-正常 0-已删除',
-  `number` int NULL DEFAULT NULL COMMENT '评论',
-  `rating` int NULL DEFAULT NULL COMMENT '评分',
+  `reviews` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '评论',
+  `rating` tinyint(1) NULL DEFAULT NULL COMMENT '评分1-5',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '订单表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '评论表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_reviews
--- ----------------------------
-
--- ----------------------------
--- Table structure for tb_serve
--- ----------------------------
-DROP TABLE IF EXISTS `tb_serve`;
-CREATE TABLE `tb_serve`  (
-  `id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键UUID',
-  `name` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '服务名字',
-  `create_time` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建时间 YYYY-MM-DD hh:mm:ss',
-  `del_flag` tinyint(1) NULL DEFAULT 1 COMMENT '是否删除 1-正常 0-已删除',
-  `price` double(10, 2) NULL DEFAULT NULL COMMENT '价格',
-  `duration` tinyint NULL DEFAULT 0 COMMENT '持续时间',
-  `category_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品种类表',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '服务表' ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of tb_serve
 -- ----------------------------
 
 -- ----------------------------
@@ -432,17 +421,20 @@ CREATE TABLE `tb_store`  (
   `address` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商店地址',
   `create_time` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建时间 YYYY-MM-DD hh:mm:ss',
   `del_flag` tinyint(1) NULL DEFAULT 1 COMMENT '是否删除 1-正常 0-已删除',
-  `user_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商店所属管理员,所属用户关联tb_user表',
+  `user_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商店所属商家,所属用户关联tb_user表',
   `telephone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '联系电话',
+  `location_accuracy` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '位置精度',
+  `info` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '简介',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商店表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_store
 -- ----------------------------
-INSERT INTO `tb_store` VALUES ('3056fd8e71efe7b25953503315e1371f', '雀巢', '12', '2023-12-24 19:42:38', 1, '8f04b962b124fe6abc6d3ff21ef1c9bd', '12');
-INSERT INTO `tb_store` VALUES ('3a2884bf6706ae06ad25f7809eee77bd', '无印良品', '上海', '2023-12-24 19:38:21', 1, '8f04b962b124fe6abc6d3ff21ef1c9bd', '123455');
-INSERT INTO `tb_store` VALUES ('63af69462dbc21ca35140aacaef9a3c4', '小米官方旗舰店', '中国', '2023-12-24 19:11:36', 1, '8b2b5d7e02ddf8968b7ce1074985707d', '1111111');
+INSERT INTO `tb_store` VALUES ('4d4cea8b200c5e80ce93384bbc6697ed', '优宠之家', '福建省厦门市翔安区长远路', '2024-07-10 23:39:42', 1, '787aa81904875242219d0ee5de16c3b5', '12345678910', NULL, '这个小主很懒');
+INSERT INTO `tb_store` VALUES ('50bc1bbdb07a47b3f0aff3587822b293', '猫语柠夏', '福建省厦门市同安区双溪大道799号', '2024-07-10 23:46:00', 1, '33bf8f09a3115b1669ef82d06a13b873', '18726356859', NULL, '自家繁殖的猫猫，全国发货');
+INSERT INTO `tb_store` VALUES ('8de6dc690598aa97187579cb8b655fa9', '狗语柠夏', '福建省厦门市同安区双溪大道800号', '2024-07-11 00:26:21', 1, '33bf8f09a3115b1669ef82d06a13b873', '18726390859', NULL, '自家繁殖的狗狗，全国发货');
+INSERT INTO `tb_store` VALUES ('be23fb1551c1977e6208c351691d315f', '胖胖宠物商店', '北京市朝阳区建国路123号', '2024-07-10 23:46:10', 1, 'f31123035b4dc0dec05e7f43612033f7', '13012345678', NULL, '欢迎来到宠物乐园，我们提供一站式宠物护理服务和高品质宠物食品。');
 
 -- ----------------------------
 -- Table structure for tb_user
@@ -462,15 +454,63 @@ CREATE TABLE `tb_user`  (
   `type` tinyint(1) NULL DEFAULT 3 COMMENT '用户类型 1-超级管理员 2-商家 3-会员',
   `sex` tinyint(1) NULL DEFAULT 0 COMMENT '性别 0-女 1-男 2-保密',
   `nickname` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '昵称',
+  `email` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '邮件地址',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_user
 -- ----------------------------
-INSERT INTO `tb_user` VALUES ('1daeb9bae45bbbbbf5ebbc150626c16b', 'admin', 'fd6b1a9c3b162fbcb5549c8b5decb5f8', '2023-12-24 19:05:43', 0, 1, 'bd3b6013-16bb-4578-8c5e-929388cda8fb', 0.00, '/img/user/1daeb9bae45bbbbbf5ebbc150626c16b/OIP-C.jpg', '18259767697', 2, 1, NULL);
-INSERT INTO `tb_user` VALUES ('34544f9ebc675eb4a1e70f489ee8ce4d', 'user3', 'efaec4eec4b8ecc40b32fe87de0ae6a3', '2023-12-24 19:45:29', 0, 1, '5237860f-fbd0-4dbd-9967-40246734e199', 0.00, '/img/user/34544f9ebc675eb4a1e70f489ee8ce4d/03 (1).png', NULL, 2, 0, NULL);
-INSERT INTO `tb_user` VALUES ('8b2b5d7e02ddf8968b7ce1074985707d', 'user1', '86ede3fe00533a2e7b37ff6d85f5c4aa', '2023-12-24 19:02:17', 1, 1, '620d6540-2006-4d60-97b7-0cd89ca426af', 0.00, NULL, NULL, 2, 0, NULL);
-INSERT INTO `tb_user` VALUES ('8f04b962b124fe6abc6d3ff21ef1c9bd', 'user2', 'a807e583ff15c385df4652571421ba91', '2023-12-24 19:31:18', 1, 1, 'bca4efd1-f408-4e67-a1f9-2a3c0192ff6a', 0.00, NULL, NULL, 2, 0, NULL);
+INSERT INTO `tb_user` VALUES ('1daeb9bae45bbbbbf5ebbc150626c16b', 'admin', 'fd6b1a9c3b162fbcb5549c8b5decb5f8', '2023-12-24 19:05:43', 0, 1, 'bd3b6013-16bb-4578-8c5e-929388cda8fb', 0.00, '/img/user/1daeb9bae45bbbbbf5ebbc150626c16b/OIP-C (1).jpg', '18259767697', 2, 1, NULL, NULL);
+INSERT INTO `tb_user` VALUES ('220d3c190170386d0985be08754ebf45', 'uesr1', 'a3508e7c6e1523efc9e28e6bcf7a4278', '2024-07-10 23:15:08', 1, 1, 'be33b6f3-5fac-47f3-88f4-395cadae876e', 0.00, NULL, NULL, 2, 0, NULL, NULL);
+INSERT INTO `tb_user` VALUES ('33bf8f09a3115b1669ef82d06a13b873', 'user4', '0530aafa437dca69cd04c1da4233b389', '2024-07-10 23:37:35', 1, 1, 'cd515db2-35eb-4569-8630-d94152759f5f', 0.00, NULL, NULL, 2, 0, NULL, NULL);
+INSERT INTO `tb_user` VALUES ('787aa81904875242219d0ee5de16c3b5', 'user1', 'bceef0421477e5e5b2cf8f36299a13ca', '2024-07-10 23:15:30', 1, 1, 'ab697c74-45b2-410e-baf9-28c1b8b7540a', 0.00, NULL, '1234567890', 2, 0, NULL, NULL);
+INSERT INTO `tb_user` VALUES ('f31123035b4dc0dec05e7f43612033f7', 'user2', 'ff7b7bac24504bf8423df192aba89b1c', '2024-07-10 23:36:18', 1, 1, '29cb7953-2c22-497d-a6cd-1bffb86888fd', 0.00, NULL, NULL, 2, 0, NULL, NULL);
+
+-- ----------------------------
+-- Table structure for tb_videos
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_videos`;
+CREATE TABLE `tb_videos`  (
+  `id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键UUID',
+  `product_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '物品id，关联goods表',
+  `create_time` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建时间 YYYY-MM-DD hh:mm:ss',
+  `del_flag` tinyint(1) NULL DEFAULT 1 COMMENT '是否删除 1-正常 0-已删除',
+  `video_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '路径',
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '描述',
+  `views_count` int NULL DEFAULT 0 COMMENT '播放次数',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '视频表' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of tb_videos
+-- ----------------------------
+INSERT INTO `tb_videos` VALUES ('16bd60723f36b3487ecc2ea7cf55e4ba', '0e5de64009e8b081789fc6123f91d5f6', '2024-07-11 00:30:33', 1, '/img/productsVideo/0e5de64009e8b081789fc6123f91d5f6/边牧.mp4', NULL, 1);
+INSERT INTO `tb_videos` VALUES ('1cc1a32d7cf72a8392b101b66e1d63d9', '136f53f82c9261f8b30fc437017a6cec', '2024-07-11 00:28:28', 1, '/img/productsVideo/136f53f82c9261f8b30fc437017a6cec/20240706_b371e0cca0972cc4_470936969673_139895023586331_published_mp4_264_hd_taobao_compressed.mp4', NULL, 2);
+INSERT INTO `tb_videos` VALUES ('7030cacc8957e08e75ace2d31b58bf3c', '7418d1c2ae4c2aa44231ea9652a02c08', '2024-07-11 00:32:27', 1, '/img/productsVideo/7418d1c2ae4c2aa44231ea9652a02c08/金毛.mp4', NULL, 0);
+INSERT INTO `tb_videos` VALUES ('98e2ce13014169ccd9728f26221ce542', 'f38810ccc6ad4a3b6648cf2ce45492b9', '2024-07-11 00:24:10', 1, '/img/productsVideo/f38810ccc6ad4a3b6648cf2ce45492b9/缅因猫.mp4', NULL, 1);
+INSERT INTO `tb_videos` VALUES ('a4cb040472da685f9f53eb5380473bd9', '5dd4e1f3092dc6bad70cc2e4f90617f7', '2024-07-11 00:31:26', 1, '/img/productsVideo/5dd4e1f3092dc6bad70cc2e4f90617f7/20230619_38c51bb0620f7052_416082078691_36990892944210_published_mp4_264_hd_taobao.mp4', NULL, 1);
+INSERT INTO `tb_videos` VALUES ('bbdfb4dad32e5f934873b3ce0d96dfb4', 'c1694480c80e91a22e0d8689ffb5e882', '2024-07-11 00:30:05', 1, '/img/productsVideo/c1694480c80e91a22e0d8689ffb5e882/20231123_144d969cf7b3724b_438951018415_71250576326403_published_mp4_264_hd_taobao.mp4', NULL, 0);
+INSERT INTO `tb_videos` VALUES ('c863cffca262e96d6b005aebfdcd3123', '07905d577bb86e9acfdfca4ecc853ba8', '2024-07-11 00:35:44', 1, '/img/productsVideo/07905d577bb86e9acfdfca4ecc853ba8/20230814_ed429dcc0ae47e17_422629836360_45262202627163_published_mp4_264_hd_taobao.mp4', NULL, 0);
+INSERT INTO `tb_videos` VALUES ('db6cc13f63657fb0473bd62e35daddbb', '68a20cd1cc5999a76c6d5769efa500fa', '2024-07-11 00:32:41', 1, '/img/productsVideo/68a20cd1cc5999a76c6d5769efa500fa/20240205_4fdaf034cfdb6e89_449017041086_91519206570610_published_mp4_264_hd_taobao.mp4', NULL, 0);
+
+-- ----------------------------
+-- Table structure for tb_view_history
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_view_history`;
+CREATE TABLE `tb_view_history`  (
+  `id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键UUID',
+  `user_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户id，关联user表',
+  `video_id` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '视频id，关联videos表',
+  `create_time` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建时间 YYYY-MM-DD hh:mm:ss',
+  `del_flag` tinyint(1) NULL DEFAULT 1 COMMENT '是否删除 1-正常 0-已删除',
+  `watch_time` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户观看该视频时间记录',
+  `is_recommended` tinyint(1) NULL DEFAULT NULL COMMENT '是否推荐 1-已推荐 0-未推荐',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '视频浏览记录表' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of tb_view_history
+-- ----------------------------
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -1,30 +1,15 @@
 <template>
     <div class="store-management">
-        <el-form
-            ref="searchForm"
-            :model="searchForm"
-            :inline="true"
-            class="form-item"
-            label-width="80px"
-        >
+        <el-form ref="searchForm" :model="searchForm" :inline="true" class="form-item" label-width="80px">
             <el-col :xl="6" :md="8" :sm="24">
-                <el-input
-                    placeholder="商店名称"
-                    v-model="searchForm.name"
-                    clearable
-                >
+                <el-input placeholder="商店名称" v-model="searchForm.name" clearable>
                 </el-input>
             </el-col>
 
             <el-col :xl="6 || 24" :md="8 || 24" :sm="24">
                 <el-form-item>
                     <div :style="{ float: 'right', overflow: 'hidden' } || {}">
-                        <el-button
-                            icon="el-icon-search"
-                            type="primary"
-                            @click="search"
-                            >搜索</el-button
-                        >
+                        <el-button icon="el-icon-search" type="primary" @click="search">搜索</el-button>
                     </div>
                 </el-form-item>
             </el-col>
@@ -37,68 +22,31 @@
 
             <el-Table-column label="地址" prop="address"></el-Table-column>
 
-            <el-Table-column
-                label="联系电话"
-                prop="telephone"
-            ></el-Table-column>
+            <el-Table-column label="联系电话" prop="telephone"></el-Table-column>
 
-            <el-Table-column
-                label="所属管理员"
-                prop="etc.user.username"
-            ></el-Table-column>
+            <el-Table-column label="所属管理员" prop="etc.user.username"></el-Table-column>
 
             <el-Table-column label="操作" fixed="right">
                 <template slot-scope="scope">
-                    <el-button
-                        @click="gotoBusiness(scope.row)"
-                        size="mini"
-                        style="margin-bottom: 10px"
-                        >商品管理</el-button
-                    >
+                    <el-button @click="gotoBusiness(scope.row)" size="mini" style="margin-bottom: 10px">商品管理</el-button>
+                    <el-button @click="gotoOrder(scope.row)" size="mini" style="margin-bottom: 10px">订单管理</el-button>
 
                     <br />
-                    <el-button
-                        size="mini"
-                        @click="edit(scope.row)"
-                        style="margin-bottom: 10px"
-                        >商店信息编辑</el-button
-                    ><br />
-                    <el-button
-                        size="mini"
-                        type="danger"
-                        @click="delOne(scope.row.id)"
-                        >删除</el-button
-                    >
+                    <el-button size="mini" @click="edit(scope.row)" style="margin-bottom: 10px">商店信息编辑</el-button><br />
+                    <el-button size="mini" type="danger" @click="delOne(scope.row.id)">删除</el-button>
                 </template>
             </el-Table-column>
         </el-Table>
 
         <div class="block">
-            <el-pagination
-                @size-change="handleSizeChange"
-                @current-change="handleCurrentChange"
-                :current-page="searchForm.pageNum"
-                :page-sizes="[2, 5, 10, 20]"
-                :page-size="searchForm.pageSize"
-                layout="total, sizes, prev, pager, next, jumper"
-                :total="total"
-            >
+            <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                :current-page="searchForm.pageNum" :page-sizes="[2, 5, 10, 20]" :page-size="searchForm.pageSize"
+                layout="total, sizes, prev, pager, next, jumper" :total="total">
             </el-pagination>
         </div>
 
-        <addOrEdit
-            v-if="visible"
-            :defaultFormDate="obj"
-            :title="title"
-            :visible="visible"
-            @close="closeFather"
-        ></addOrEdit>
-        <goods
-            v-if="visible_mgn"
-            :visible="visible_mgn"
-            :storeId="storeId"
-            @close="closeMgn"
-        ></goods>
+        <addOrEdit v-if="visible" :defaultFormDate="obj" :title="title" :visible="visible" @close="closeFather"></addOrEdit>
+        <goods v-if="visible_mgn" :visible="visible_mgn" :storeId="storeId" @close="closeMgn"></goods>
     </div>
 </template>
   
@@ -107,7 +55,7 @@ import { getByToken } from '@/api/modules/user'
 import { storePage, storeDeleteByIds } from '@/api/modules/store'
 import addOrEdit from './module/addOrEdit'
 import goods from './module/goods'
-import { getStore } from '@/lib/storage'
+import { getStore, setStore } from '@/lib/storage'
 
 export default {
     components: { addOrEdit, goods },
@@ -137,17 +85,20 @@ export default {
         console.log(this.userType)
         this.loadUserData()
         this.loadTableData()
-
-        this.$store.commit('setUserId')
-        console.log(this.$store.getters['getUserId'])
     },
     methods: {
         gotoBusiness(a) {
-            console.log(a.id)
+            setStore("storeId", a.id)
             this.$store.commit('setStoreId', a.id)
-            console.log('storeId:' + this.$store.getters['getStoreId'])
             this.$router.push('Business')
         },
+
+        gotoOrder(a) {
+            setStore("storeId", a.id)
+            this.$store.commit('setStoreId', a.id)
+            this.$router.push('ManageOrderPage2')
+        },
+
         dicMgn(id) {
             this.visible_mgn = true
             this.storeId = id

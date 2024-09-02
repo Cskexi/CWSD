@@ -3,6 +3,7 @@ package com.example.demo.order.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.demo.Goods.entity.Goods;
 import com.example.demo.chapter4.entity.Dictype;
 import com.example.demo.springboot2023.utils.ConstantsUtils;
 import com.example.demo.springboot2023.utils.DateTool;
@@ -77,6 +78,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper,Order> implements 
     {
         QueryWrapper<Order> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().eq(Order::getDelFlag, ConstantsUtils.GL_NORMAL);
+
         queryWrapper.lambda().orderByDesc(Order::getCreateTime);
         List<Order> list =this.list(queryWrapper);
          return baseMapper.getList(list,id);

@@ -49,4 +49,7 @@ public class User extends BaseEntity {
     @ApiModelProperty(value = "邮件地址")
     private String email;
 
+    @ApiModelProperty(value = "推荐集合")
+    private String ids;
+
 }

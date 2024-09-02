@@ -69,7 +69,7 @@ public class StoreController {
         @ApiImplicitParam(name = "pageSize",required = true,paramType = "query",value = "每页记录数")
     })
     @RequestMapping(method = RequestMethod.POST,value = "/page")
-    public Result page( Integer pageNum,Integer pageSize,String userId ){
+    public Result page( Integer pageNum,Integer pageSize,String userId){
         Result result = new Result();
         result.success("分页获取成功");
         result.setData(storeService.page(pageNum,pageSize,userId));

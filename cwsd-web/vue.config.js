@@ -10,6 +10,8 @@ module.exports = defineConfig({
   lintOnSave: true, // 在保存时校验格式
   productionSourceMap: false, // 生产环境是否生成 SourceMap
   devServer: {
+
+    allowedHosts: "all",
     open: true, // 启动服务后是否打开浏览器
     host: '0.0.0.0',
     port: 8089, // 服务端口
@@ -21,6 +23,8 @@ module.exports = defineConfig({
       '/api': {
         //名字必须跟application context相同 否则404
         target: 'http://localhost:8899/spring',
+        //target: 'http://192.168.238.88:8899/spring',
+
         changeOrigin: true, //  跨域
         pathRewrite: {
           '^/api': ''

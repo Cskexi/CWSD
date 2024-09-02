@@ -1,18 +1,16 @@
 package com.example.demo.products.controller;
 
+import com.example.demo.Store.entity.Store;
+import com.example.demo.products.dto.ProductsDto;
 import com.example.demo.springboot2023.utils.Result;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import com.example.demo.products.entity.Products;
 import com.example.demo.products.service.ProductsService;
-
-import org.springframework.web.bind.annotation.RestController;
 
 
 /**
@@ -80,12 +78,28 @@ public class ProductsController {
             @ApiImplicitParam(name="name",value="搜索关键字",paramType = "query")
     })
     @RequestMapping(method = RequestMethod.POST,value = "/page")
-    public Result page( Integer pageNum,Integer pageSize,String name ){
+            public Result page( Integer pageNum,Integer pageSize,String name,String storeId ){
         Result result = new Result();
         result.success("分页获取成功");
         result.setData(productsService.page(pageNum,pageSize,name));
         return result;
     }
+
+
+    @ApiOperation(value = "分页获取记录")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "pageNum",required = true,paramType = "query",value = "当前页码"),
+            @ApiImplicitParam(name = "pageSize",required = true,paramType = "query",value = "每页记录数"),
+            @ApiImplicitParam(name="name",value="搜索关键字",paramType = "query")
+    })
+    @RequestMapping(method = RequestMethod.POST,value = "/page2")
+    public Result page2( @RequestBody ProductsDto products) {
+        Result result = new Result();
+        result.success("分页获取成功");
+        result.setData(productsService.page2(products));
+        return result;
+    }
+
 
     @ApiOperation(value = "获取商品详情")
     @ApiImplicitParams({
@@ -94,7 +108,7 @@ public class ProductsController {
     @RequestMapping(method = RequestMethod.POST,value = "/getMessage")
     public Result getMessage(String id){
         Result result = new Result();
-        result.setData(productsService.getById(id));
+        result.setData(productsService.getById2(id));
         result.success("成功得到商店信息");
         return result;
     }
@@ -112,6 +126,27 @@ public class ProductsController {
     public Result selectById(String Id){
         Result result = new Result();
         result.setData(productsService.getById(Id));
+        result.success("成功得到商品信息");
+        return result;
+    }
+
+    @RequestMapping(method = RequestMethod.POST,value = "/numChange")
+    public Result numChange(String Id,Integer num){
+        Result result = new Result();
+        Products products= productsService.getById(Id);
+        products.setSoldQuantity(products.getSoldQuantity()+num);
+        if(num<0){
+            products.setInventory(products.getInventory()-num);
+        }
+        result.setData(productsService.addOrUpdate(products));
+        result.success("成功得到商品信息");
+        return result;
+    }
+
+    @RequestMapping(method = RequestMethod.GET,value = "/viewChange")
+    public Result viewChange(){
+        Result result = new Result();
+        productsService.viewChange();
         result.success("成功得到商品信息");
         return result;
     }

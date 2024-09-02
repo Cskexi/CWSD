@@ -56,11 +56,11 @@ public class OrderItemsController {
 
 
     @ApiOperation(value = "查询所有记录")
-    @RequestMapping(method = RequestMethod.POST,value = "/list")
-    public Result list(){
+    @RequestMapping(method = RequestMethod.GET,value = "/list")
+    public Result list(String userId){
         Result result = new Result();
         result.success("获取list成功");
-        result.setData(orderItemsService.list());
+        result.setData(orderItemsService.list(userId));
         return result;
     }
 
@@ -70,10 +70,10 @@ public class OrderItemsController {
         @ApiImplicitParam(name = "pageSize",required = true,paramType = "query",value = "每页记录数")
     })
     @RequestMapping(method = RequestMethod.POST,value = "/page")
-    public Result page( Integer pageNum,Integer pageSize ){
+    public Result page( Integer pageNum,Integer pageSize ,String storeId){
         Result result = new Result();
         result.success("分页获取成功");
-        result.setData(orderItemsService.page(pageNum,pageSize));
+        result.setData(orderItemsService.page(pageNum,pageSize,storeId));
         return result;
     }
 

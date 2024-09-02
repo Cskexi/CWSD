@@ -39,11 +39,6 @@
 
             <el-button type="success" @click="uploadClick">视频上传</el-button> -->
 
-
-
-
-
-
             <div class="image-list">
                 <el-image v-for="(file, index) of filesList" :key="index" :src="file.url" fit="cover"></el-image>
                 <i class="iconfont icon-delete" v-for="(file, index) of filesList" :key="index" @click="remove(index)"></i>
@@ -198,6 +193,7 @@ export default {
                         this.form.inventory = 1
                     }
                     console.log(this.form)
+                    this.form.storeId = getStore("storeId")
                     productsAddOrUpdate({
                         ...this.form
                     })

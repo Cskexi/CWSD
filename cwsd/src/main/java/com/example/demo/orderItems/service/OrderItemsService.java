@@ -19,7 +19,7 @@ public interface OrderItemsService extends IService<OrderItems> {
 
     Boolean addOrUpdate(OrderItems orderItems);
     void deleteByIds(String ids);
-    List<OrderItems> list();
-    Page<OrderItems> page(Integer pageNum,Integer pageSize);
+    List<OrderItems> list(String userId);
+    Page<OrderItems> page(Integer pageNum,Integer pageSize,String storeId);
 
 }

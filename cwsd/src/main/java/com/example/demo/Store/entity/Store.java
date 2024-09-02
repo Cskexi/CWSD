@@ -45,4 +45,7 @@ public class Store extends BaseEntity {
     @ApiModelProperty(value = "联系电话")
     private String telephone;
 
+    @ApiModelProperty(value = "联系电话")
+    private String info;
+
 }

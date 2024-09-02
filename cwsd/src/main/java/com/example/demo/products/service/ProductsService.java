@@ -2,6 +2,7 @@ package com.example.demo.products.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.demo.products.dto.ProductsDto;
 import com.example.demo.products.entity.Products;
 
 import java.util.List;
@@ -22,5 +23,8 @@ public interface ProductsService extends IService<Products> {
     List<Products> list();
     List<Products> listSearch(Products products);
     Page<Products> page(Integer pageNum,Integer pageSize,String name);
+    Page<Products> page2(ProductsDto productsDto);
+    Products getById2(String id);
 
+    void viewChange();
 }
