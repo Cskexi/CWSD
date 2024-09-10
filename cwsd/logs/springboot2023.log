@@ -103,3 +103,115 @@
 2024-09-10 10:14:59.895  INFO 2576 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_5
 2024-09-10 10:14:59.896  INFO 2576 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: pageUsingPOST_20
 2024-09-10 10:14:59.913  INFO 2576 --- [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 4.181 seconds (JVM running for 5.097)
+2024-09-10 10:16:19.130  INFO 26684 --- [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 1.8.0_381 on Csk-Book with PID 26684 (D:\User\Workspace\CWSD\cwsd\target\classes started by Cskexi in D:\User\Workspace\CWSD\cwsd)
+2024-09-10 10:16:19.131  INFO 26684 --- [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to default profiles: default
+2024-09-10 10:16:19.160  INFO 26684 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-09-10 10:16:19.160  INFO 26684 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-09-10 10:16:19.869  WARN 26684 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'bookMapper' and 'com.example.demo.chapter2.mapper.BookMapper' mapperInterface. Bean already defined with the same name!
+2024-09-10 10:16:19.870  WARN 26684 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.example.demo.chapter2.mapper]' package. Please check your configuration.
+2024-09-10 10:16:20.232  INFO 26684 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
+2024-09-10 10:16:20.238  INFO 26684 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10 10:16:20.238  INFO 26684 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.48]
+2024-09-10 10:16:20.307  INFO 26684 --- [restartedMain] o.a.c.c.C.[.[localhost].[/spring]        : Initializing Spring embedded WebApplicationContext
+2024-09-10 10:16:20.307  INFO 26684 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1147 ms
+2024-09-10 10:16:21.926  INFO 26684 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2024-09-10 10:16:22.018  INFO 26684 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10 10:16:22.240  INFO 26684 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/spring'
+2024-09-10 10:16:22.241  INFO 26684 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2024-09-10 10:16:22.251  INFO 26684 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2024-09-10 10:16:22.271  INFO 26684 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2024-09-10 10:16:22.362  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addOrUpdateUsingPOST_1
+2024-09-10 10:16:22.363  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteByIdsUsingPOST_1
+2024-09-10 10:16:22.364  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_1
+2024-09-10 10:16:22.366  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: pageUsingPOST_1
+2024-09-10 10:16:22.370  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addOrUpdateUsingPOST_2
+2024-09-10 10:16:22.370  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteByIdsUsingPOST_2
+2024-09-10 10:16:22.372  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_2
+2024-09-10 10:16:22.374  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: pageUsingPOST_2
+2024-09-10 10:16:22.376  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addOrUpdateUsingPOST_3
+2024-09-10 10:16:22.377  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteByIdsUsingPOST_3
+2024-09-10 10:16:22.380  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: pageUsingPOST_3
+2024-09-10 10:16:22.385  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addOrUpdateUsingPOST_4
+2024-09-10 10:16:22.386  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteByIdsUsingPOST_4
+2024-09-10 10:16:22.386  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_3
+2024-09-10 10:16:22.387  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: pageUsingPOST_4
+2024-09-10 10:16:22.390  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addOrUpdateUsingPOST_5
+2024-09-10 10:16:22.391  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteByIdsUsingPOST_5
+2024-09-10 10:16:22.391  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_4
+2024-09-10 10:16:22.393  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: pageUsingPOST_5
+2024-09-10 10:16:22.394  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: pageByUsernameUsingPOST_1
+2024-09-10 10:16:22.400  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addOrUpdateUsingPOST_6
+2024-09-10 10:16:22.401  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteByIdsUsingPOST_6
+2024-09-10 10:16:22.402  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_5
+2024-09-10 10:16:22.403  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: pageUsingPOST_6
+2024-09-10 10:16:22.409  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addOrUpdateUsingPOST_7
+2024-09-10 10:16:22.410  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteByIdsUsingPOST_7
+2024-09-10 10:16:22.411  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_1
+2024-09-10 10:16:22.411  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: pageUsingPOST_7
+2024-09-10 10:16:22.415  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addOrUpdateUsingPOST_8
+2024-09-10 10:16:22.416  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteByIdsUsingPOST_8
+2024-09-10 10:16:22.416  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_6
+2024-09-10 10:16:22.418  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: pageUsingPOST_8
+2024-09-10 10:16:22.420  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addOrUpdateUsingPOST_9
+2024-09-10 10:16:22.421  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteByIdsUsingPOST_9
+2024-09-10 10:16:22.422  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_7
+2024-09-10 10:16:22.422  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: pageUsingPOST_9
+2024-09-10 10:16:22.426  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addOrUpdateUsingPOST_10
+2024-09-10 10:16:22.426  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteByIdsUsingPOST_10
+2024-09-10 10:16:22.427  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_2
+2024-09-10 10:16:22.428  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: pageUsingPOST_10
+2024-09-10 10:16:22.430  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addOrUpdateUsingPOST_11
+2024-09-10 10:16:22.431  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteByIdsUsingPOST_11
+2024-09-10 10:16:22.431  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_8
+2024-09-10 10:16:22.432  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: pageUsingPOST_11
+2024-09-10 10:16:22.437  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addOrUpdateUsingPOST_12
+2024-09-10 10:16:22.437  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteByIdsUsingPOST_12
+2024-09-10 10:16:22.438  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getMessageUsingPOST_1
+2024-09-10 10:16:22.438  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_9
+2024-09-10 10:16:22.440  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: pageUsingPOST_12
+2024-09-10 10:16:22.442  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: page2UsingPOST_1
+2024-09-10 10:16:22.456  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addOrUpdateUsingPOST_13
+2024-09-10 10:16:22.457  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteByIdsUsingPOST_13
+2024-09-10 10:16:22.458  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_3
+2024-09-10 10:16:22.458  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: pageUsingPOST_13
+2024-09-10 10:16:22.460  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addOrUpdateUsingPOST_14
+2024-09-10 10:16:22.461  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteByIdsUsingPOST_14
+2024-09-10 10:16:22.462  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_10
+2024-09-10 10:16:22.462  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: pageUsingPOST_14
+2024-09-10 10:16:22.465  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addOrUpdateUsingPOST_15
+2024-09-10 10:16:22.466  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteByIdsUsingPOST_15
+2024-09-10 10:16:22.466  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getMessageUsingPOST_2
+2024-09-10 10:16:22.467  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_4
+2024-09-10 10:16:22.468  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: pageUsingPOST_15
+2024-09-10 10:16:22.469  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: page2UsingPOST_2
+2024-09-10 10:16:22.469  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectByIdUsingGET_1
+2024-09-10 10:16:22.472  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addOrUpdateUsingPOST_16
+2024-09-10 10:16:22.472  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteByIdsUsingPOST_16
+2024-09-10 10:16:22.473  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_11
+2024-09-10 10:16:22.473  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: pageUsingPOST_16
+2024-09-10 10:16:22.476  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addOrUpdateUsingPOST_17
+2024-09-10 10:16:22.477  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteByIdsUsingPOST_17
+2024-09-10 10:16:22.477  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getByIdUsingGET_1
+2024-09-10 10:16:22.478  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_12
+2024-09-10 10:16:22.479  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: pageUsingPOST_17
+2024-09-10 10:16:22.485  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addOrUpdateUsingPOST_18
+2024-09-10 10:16:22.486  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteByIdsUsingPOST_18
+2024-09-10 10:16:22.488  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_13
+2024-09-10 10:16:22.490  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: pageUsingPOST_18
+2024-09-10 10:16:22.492  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: page2UsingPOST_3
+2024-09-10 10:16:22.494  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addOrUpdateUsingPOST_19
+2024-09-10 10:16:22.494  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteByIdsUsingPOST_19
+2024-09-10 10:16:22.495  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingPOST_14
+2024-09-10 10:16:22.497  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: pageUsingPOST_19
+2024-09-10 10:16:22.502  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addOrUpdateUsingPOST_20
+2024-09-10 10:16:22.503  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteByIdsUsingPOST_20
+2024-09-10 10:16:22.503  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_5
+2024-09-10 10:16:22.504  INFO 26684 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: pageUsingPOST_20
+2024-09-10 10:16:22.518  INFO 26684 --- [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 3.627 seconds (JVM running for 4.451)
+2024-09-10 10:17:23.070  INFO 26684 --- [http-nio-0.0.0.0-8899-exec-1] o.a.c.c.C.[.[localhost].[/spring]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-10 10:17:23.070  INFO 26684 --- [http-nio-0.0.0.0-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-09-10 10:17:23.072  INFO 26684 --- [http-nio-0.0.0.0-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-09-10 10:17:23.288  INFO 26684 --- [http-nio-0.0.0.0-8899-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-10 10:17:23.901  INFO 26684 --- [http-nio-0.0.0.0-8899-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-10 10:20:55.500  INFO 26684 --- [Thread-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-10 10:20:55.508  INFO 26684 --- [Thread-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
