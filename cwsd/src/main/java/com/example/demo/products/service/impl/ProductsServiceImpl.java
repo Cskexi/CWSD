@@ -116,8 +116,16 @@ public class ProductsServiceImpl extends ServiceImpl<ProductsMapper,Products> im
         if (StringUtils.isNotBlank(productsDto.getStoreId())) {
             lambdaQueryWrapper.like(Products::getStoreId, productsDto.getStoreId());
         }
+        // 定义α和β的值用于评分计算
+        double alpha = 0.7; // 销售量权重
+        double beta = 0.3;  // 浏览次数权重
+
+        // 添加排序逻辑，使用SQL片段进行评分排序
+        lambdaQueryWrapper.last("ORDER BY (sold_quantity * " + alpha + " + view * " + beta + ") DESC");
+        //lambdaQueryWrapper.orderByDesc(Products::getSoldQuantity * alpha + " + view_count * " + beta + ")");
+
         //lambdaQueryWrapper.orderByDesc(Products::getCreateTime);
-        lambdaQueryWrapper.orderByDesc(Products::getSoldQuantity);
+        //lambdaQueryWrapper.orderByDesc(Products::getSoldQuantity);
         page = this.page(page, lambdaQueryWrapper);
         return page;
     }
