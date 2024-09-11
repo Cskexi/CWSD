@@ -17,6 +17,7 @@ import com.example.demo.springboot2023.utils.ConstantsUtils;
 import com.example.demo.orderItems.mapper.OrderItemsMapper;
 import com.example.demo.orderItems.entity.OrderItems;
 import com.example.demo.orderItems.service.OrderItemsService;
+import com.example.demo.springboot2023.utils.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -64,6 +65,12 @@ public class OrderItemsServiceImpl extends ServiceImpl<OrderItemsMapper,OrderIte
 
             this.save(orderItems);
         }else{
+            if(orderItems.getStatus()==-1){
+                OrderItems orderItems1 = getById(orderItems.getId());
+                if(orderItems1.getStatus()!=0&&orderItems1.getStatus()!=1){
+                    return false;
+                }
+            }
             //update
             this.updateById(orderItems);
         }

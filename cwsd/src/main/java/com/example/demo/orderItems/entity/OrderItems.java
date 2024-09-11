@@ -43,7 +43,7 @@ public class OrderItems extends BaseEntity {
     private Integer number;
 
     @ApiModelProperty(value = "订单时的价格")
-    private Integer priceAtOrder;
+    private Double priceAtOrder;
 
     @ApiModelProperty(value = "退单理由")
     private String refundReason;
