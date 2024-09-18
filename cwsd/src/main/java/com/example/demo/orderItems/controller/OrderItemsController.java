@@ -35,9 +35,7 @@ public class OrderItemsController {
         Result result = new Result();
 
         //交给业务去处理，service
-        if(!orderItemsService.addOrUpdate(orderItems)){
-            result.fail("状态修改失败");
-        }
+        result.setData(orderItemsService.addOrUpdate(orderItems));
         return result;
 
     }

@@ -17,7 +17,7 @@ import java.util.List;
 public interface ReviewsService extends IService<Reviews> {
 
 
-    Boolean addOrUpdate(Reviews reviews);
+    Reviews addOrUpdate(Reviews reviews);
     void deleteByIds(String ids);
     List<Reviews> list(String productId);
     Page<Reviews> page(Integer pageNum,Integer pageSize);

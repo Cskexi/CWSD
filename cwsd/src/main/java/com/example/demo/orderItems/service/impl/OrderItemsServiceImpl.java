@@ -19,6 +19,7 @@ import com.example.demo.orderItems.entity.OrderItems;
 import com.example.demo.orderItems.service.OrderItemsService;
 import com.example.demo.springboot2023.utils.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -42,51 +43,121 @@ public class OrderItemsServiceImpl extends ServiceImpl<OrderItemsMapper,OrderIte
     private ProductsService productsService;
 
     @Override
-    public Boolean addOrUpdate(OrderItems orderItems) {
+    public OrderItems addOrUpdate(OrderItems orderItems) {
         Random rand = new Random();
-        if(StringUtils.isBlank(orderItems.getId())){
-            //add
-            String str ="";
-            for (int i = 0; i < 4; i++) {
-                str = str + (char)(Math.random()*26+'a');
-            }
-            SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmm");
-            String str2=sdf.format(new Date());
-            orderItems.setNo("no"+str2+(rand.nextInt(9000) + 1000)+str);
-            orderItems.setCreateTime(DateTool.getCurrTime());
+//        if(StringUtils.isBlank(orderItems.getId())){
+//            //add
+//            String str ="";
+//            for (int i = 0; i < 4; i++) {
+//                str = str + (char)(Math.random()*26+'a');
+//            }
+//            SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmm");
+//            String str2=sdf.format(new Date());
+//            orderItems.setNo("no"+str2+(rand.nextInt(9000) + 1000)+str);
+//            orderItems.setCreateTime(DateTool.getCurrTime());
+//
+//            Products products = productsService.getById(orderItems.getProductId());
+//
+//            products.setInventory(products.getInventory()-orderItems.getNumber());
+//            if(products.getInventory()<=0){
+//                products.setStatus(2);
+//            }
+//            productsService.updateById(products);
+//
+//            this.save(orderItems);
+//        }else{
+//            if(orderItems.getStatus()==-1){
+//                OrderItems orderItems1 = getById(orderItems.getId());
+//                if(orderItems1.getStatus()!=0&&orderItems1.getStatus()!=1){
+//                    return orderItems1;
+//                }
+//            }
+//            //update
+//            this.updateById(orderItems);
+//        }
+//        return orderItems;
 
-            Products products = productsService.getById(orderItems.getProductId());
 
-            products.setInventory(products.getInventory()-orderItems.getNumber());
-            if(products.getInventory()<=0){
-                products.setStatus(2);
-            }
-            productsService.updateById(products);
+        try {
+            // 更新产品库存
 
-            this.save(orderItems);
-        }else{
-            if(orderItems.getStatus()==-1){
-                OrderItems orderItems1 = getById(orderItems.getId());
-                if(orderItems1.getStatus()!=0&&orderItems1.getStatus()!=1){
-                    return false;
+
+            // 提交订单项
+            if (StringUtils.isBlank(orderItems.getId())) {
+
+                String str ="";
+                for (int i = 0; i < 4; i++) {
+                    str = str + (char)(Math.random()*26+'a');
                 }
+                SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmm");
+                String str2=sdf.format(new Date());
+                orderItems.setNo("no"+str2+(rand.nextInt(9000) + 1000)+str);
+                orderItems.setCreateTime(DateTool.getCurrTime());
+
+                Products products = productsService.getById(orderItems.getProductId());
+                products.setInventory(products.getInventory()-orderItems.getNumber());
+                if(products.getInventory()<=0){
+                    products.setStatus(2);
+                }
+                productsService.updateById(products);
+
+                this.save(orderItems);
+            } else {
+                if(orderItems.getStatus()==-1){
+                    OrderItems orderItems1 = getById(orderItems.getId());
+                    if(orderItems1.getStatus()!=0&&orderItems1.getStatus()!=1){
+                        return orderItems1;
+                    }
+                }
+                if(orderItems.getStatus()==-1||orderItems.getStatus()<=-4){
+                    Products products = productsService.getById(orderItems.getProductId());
+                    products.setInventory(products.getInventory()+orderItems.getNumber());
+                    if(products.getInventory()>0){
+                        products.setStatus(1);
+                    }
+                    productsService.updateById(products);
+                }
+
+                //update
+                this.updateById(orderItems);
             }
-            //update
-            this.updateById(orderItems);
+        } catch (OptimisticLockingFailureException e) {
+            // 处理并发修改冲突
+            log.error("Concurrent modification detected during addOrUpdate operation.", e);
+            throw e;
         }
-        return true;
+
+        return orderItems;
+
     }
 
     @Override
     public void deleteByIds(String ids) {
         List<String> listIds = new ArrayList<>();
         String[] aryIds = ids.split(",");
-        for(String id: aryIds){
-        OrderItems orderItems = this.getById(id);
-        orderItems.setDelFlag(ConstantsUtils.GL_DEL);
-        this.updateById(orderItems);
-        }
 
+        try {
+            for(String id: aryIds) {
+                // 获取订单项
+                OrderItems orderItems = this.getById(id);
+
+                // 更新产品库存
+            Products products = productsService.getById(orderItems.getProductId());
+            products.setInventory(products.getInventory()+orderItems.getNumber());
+            if(products.getInventory()>0){
+                products.setStatus(1);
+            }
+            productsService.updateById(products);
+
+                // 删除订单项
+                orderItems.setDelFlag(ConstantsUtils.GL_DEL);
+                this.removeById(orderItems);
+            }
+        } catch (OptimisticLockingFailureException e) {
+            // 处理并发修改冲突
+            log.error("Concurrent modification detected during deleteByIds operation.", e);
+            throw e;
+        }
     }
 
 

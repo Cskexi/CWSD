@@ -40,6 +40,7 @@ public class ProductsServiceImpl extends ServiceImpl<ProductsMapper,Products> im
         if(StringUtils.isBlank(products.getId())){
             //add
             products.setCreateTime(DateTool.getCurrTime());
+            products.setPic("/img/blank.png");
             this.save(products);
         }else{
             //update

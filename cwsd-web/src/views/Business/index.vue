@@ -1,7 +1,7 @@
 import store from '@/store';
 <template>
     <div class="store-management">
-        1233 商品管理
+        {{this.storeName}}的商品管理
         <!-- 搜索框和新增按钮 -->
         <el-form ref="searchForm" :model="searchForm" :inline="true" class="form-item" label-width="80px">
             <el-button type="primary" @click="add()">新增商品</el-button>
@@ -65,6 +65,7 @@ export default {
             visible2: false,
             visible_mgn: false,
             storeId: '',
+            storeName:'',
             total: 10,
             userId: '',
             userType: 3,
@@ -93,8 +94,9 @@ export default {
         this.storeType = getStore('storeType')
         //
         this.storeId = this.$store.getters['getStoreId']
-        console.log("3213:" + getStore("storeId"))
+        this.storeName = getStore("storeName")
         this.searchForm.storeId = getStore("storeId")
+        
         this.loadUserData()
         this.loadTableData()
     },
@@ -106,12 +108,12 @@ export default {
         edit(row) {
             this.obj = row
             this.obj2 = this.categoriesData
-            this.title = '编辑商店：' + row.name
+            this.title = '编辑商品：' + row.name
             this.visible = true
         },
         edit2(row) {
             this.obj3 = row
-            this.title = '编辑商店：' + row.name
+            this.title = '编辑商品：' + row.name
             this.visible2 = true
         },
         add() {

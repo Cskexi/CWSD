@@ -82,14 +82,15 @@ export default {
     mounted() {
         this.userId = getStore('userId')
         this.userType = getStore('userType')
-        console.log(this.userType)
         this.loadUserData()
         this.loadTableData()
     },
     methods: {
         gotoBusiness(a) {
             setStore("storeId", a.id)
+            setStore("storeName",a.name)
             this.$store.commit('setStoreId', a.id)
+            this.$store.commit('setStoreName', a.name)
             this.$router.push('Business')
         },
 

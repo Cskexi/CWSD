@@ -1,6 +1,6 @@
 <template>
     <el-dialog :title="title" :visible="visible" :before-close="close">
-        <el-form :model="form" ref="form">
+        <el-form :model="form" ref="form" :rules="rules">
             <el-form-item label="商品名称" prop="name">
                 <el-input v-model="form.name" autocomplete="off"></el-input>
             </el-form-item>
@@ -25,24 +25,21 @@
                 <el-input v-model="form.inventory" autocomplete="off"></el-input>
             </el-form-item>
             <!-- 上传 -->
-            <el-upload ref="uploadRef" action="#" :file-list="filesList" :http-request="uploadSumit" :auto-upload="false"
+            <div v-if="title !== '新增'">
+                <el-upload ref="uploadRef" action="#" :file-list="filesList" :http-request="uploadSumit" :auto-upload="false"
                 list-type="picture" :limit="2" :show-file-list="false" :on-change="handleChange">
                 <el-button type="primary">图片选择</el-button>
             </el-upload>
 
             <el-button type="success" @click="uploadClick">图片上传</el-button>
 
-            <!-- <el-upload ref="uploadRef" action="#" :file-list="filesList2" :http-request="uploadSumit2" :auto-upload="false"
-                list-type="picture" :limit="2" :show-file-list="false" :on-change="handleChange">
-                <el-button type="primary">视频选择</el-button>
-            </el-upload>
-
-            <el-button type="success" @click="uploadClick">视频上传</el-button> -->
-
             <div class="image-list">
                 <el-image v-for="(file, index) of filesList" :key="index" :src="file.url" fit="cover"></el-image>
                 <i class="iconfont icon-delete" v-for="(file, index) of filesList" :key="index" @click="remove(index)"></i>
             </div>
+            </div>
+            
+
             <!-- 到这里 -->
         </el-form>
 
@@ -91,7 +88,17 @@ export default {
                 description: '',
             },
             userId: '',
-            options: []
+            options: [],
+            rules: {
+                name: [
+                    { required: true, message: '请输入商品名称', trigger: 'blur' },
+                    { min: 2, max: 100, message: '长度在 2 到 100 个字符', trigger: 'blur' }
+                ],
+                price: [
+                    { required: true, message: '请输入商品价格', trigger: 'blur' },
+                    { validator: this.validatePrice, trigger: 'blur' }
+                ]
+            }
         }
     },
     mounted() {
@@ -123,6 +130,18 @@ export default {
         }
     },
     methods: {
+        validatePrice(rule, value, callback) {
+            if (!value) {
+                return callback(new Error('请输入商品价格'));
+            }
+            if (isNaN(value)) {
+                return callback(new Error('价格必须是数字'));
+            }
+            if (value <= 0) {
+                return callback(new Error('价格必须大于零'));
+            }
+            callback();
+        },
         //变化
         handleChange(uploadFile, uploadFiles) {
             if (uploadFiles.length > 1) {

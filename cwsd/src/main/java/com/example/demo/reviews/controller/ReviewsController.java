@@ -35,7 +35,7 @@ public class ReviewsController {
         Result result = new Result();
 
         //交给业务去处理，service
-        reviewsService.addOrUpdate(reviews);
+        result.setData(reviewsService.addOrUpdate(reviews));
 
         return result;
     }

@@ -34,7 +34,7 @@ public class ReviewsServiceImpl extends ServiceImpl<ReviewsMapper,Reviews> imple
     private UserService userService;
 
     @Override
-    public Boolean addOrUpdate(Reviews reviews) {
+    public Reviews addOrUpdate(Reviews reviews) {
         if(StringUtils.isBlank(reviews.getId())){
             //add
             reviews.setCreateTime(DateTool.getCurrTime());
@@ -43,7 +43,7 @@ public class ReviewsServiceImpl extends ServiceImpl<ReviewsMapper,Reviews> imple
             //update
             this.updateById(reviews);
         }
-        return true;
+        return reviews;
     }
 
     @Override
@@ -53,7 +53,8 @@ public class ReviewsServiceImpl extends ServiceImpl<ReviewsMapper,Reviews> imple
         for(String id: aryIds){
         Reviews reviews = this.getById(id);
         reviews.setDelFlag(ConstantsUtils.GL_DEL);
-        this.updateById(reviews);
+        //this.updateById(reviews);
+            this.removeById(reviews);
         }
 
     }
