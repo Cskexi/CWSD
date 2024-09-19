@@ -84,7 +84,7 @@ public class OrderItemsServiceImpl extends ServiceImpl<OrderItemsMapper,OrderIte
 
             // 提交订单项
             if (StringUtils.isBlank(orderItems.getId())) {
-
+                //订单编号
                 String str ="";
                 for (int i = 0; i < 4; i++) {
                     str = str + (char)(Math.random()*26+'a');
@@ -92,8 +92,9 @@ public class OrderItemsServiceImpl extends ServiceImpl<OrderItemsMapper,OrderIte
                 SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmm");
                 String str2=sdf.format(new Date());
                 orderItems.setNo("no"+str2+(rand.nextInt(9000) + 1000)+str);
-                orderItems.setCreateTime(DateTool.getCurrTime());
 
+                orderItems.setCreateTime(DateTool.getCurrTime());
+                //修过库存
                 Products products = productsService.getById(orderItems.getProductId());
                 products.setInventory(products.getInventory()-orderItems.getNumber());
                 if(products.getInventory()<=0){
@@ -103,12 +104,15 @@ public class OrderItemsServiceImpl extends ServiceImpl<OrderItemsMapper,OrderIte
 
                 this.save(orderItems);
             } else {
+                //取消订单
                 if(orderItems.getStatus()==-1){
+                    //原订单数据
                     OrderItems orderItems1 = getById(orderItems.getId());
                     if(orderItems1.getStatus()!=0&&orderItems1.getStatus()!=1){
                         return orderItems1;
                     }
                 }
+                //如果订单被取消或被退单
                 if(orderItems.getStatus()==-1||orderItems.getStatus()<=-4){
                     Products products = productsService.getById(orderItems.getProductId());
                     products.setInventory(products.getInventory()+orderItems.getNumber());
@@ -163,12 +167,14 @@ public class OrderItemsServiceImpl extends ServiceImpl<OrderItemsMapper,OrderIte
 
     @Override
     public List<OrderItems> list(String userId) {
+        //查询用户订单
         if(StringUtils.isNotBlank(userId)){
             QueryWrapper<OrderItems> queryWrapper = new QueryWrapper<>();
             queryWrapper.lambda().eq(OrderItems::getDelFlag,ConstantsUtils.GL_NORMAL);
             queryWrapper.lambda().like(OrderItems::getUserId, userId);
             queryWrapper.lambda().orderByDesc(OrderItems::getCreateTime);
             List<OrderItems> list =this.list(queryWrapper);
+            //订单etc储存商品信息
             for(OrderItems orderItems : list){
                 Products products = new Products();
                 products = productsService.getById(orderItems.getProductId());
@@ -179,7 +185,7 @@ public class OrderItemsServiceImpl extends ServiceImpl<OrderItemsMapper,OrderIte
             return null;
     }
 
-
+//商家分页查询订单
     @Override
     public Page<OrderItems> page(Integer pageNum,Integer pageSize,String storeId) {
         Page<OrderItems> page = new Page(pageNum,pageSize);

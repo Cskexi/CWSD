@@ -11,9 +11,6 @@
         <module name="CWSD" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="cwsd" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
